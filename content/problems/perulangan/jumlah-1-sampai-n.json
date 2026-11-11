@@ -1,0 +1,41 @@
+{
+  "id": "jumlah-1-sampai-n",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "perulangan",
+  "level": "Mudah",
+  "title": "Jumlah 1 sampai N",
+  "desc": "Kembalikan jumlah semua bilangan bulat dari 1 sampai n. Jika n kurang dari 1, kembalikan 0.",
+  "tags": ["for", "akumulator"],
+  "function": { "name": "jumlahSampai", "params": [{ "name": "n", "type": "int" }], "returns": "int" },
+  "tests": [
+    { "args": [5], "expected": 15 },
+    { "args": [1], "expected": 1 },
+    { "args": [10], "expected": 55 },
+    { "args": [100], "expected": 5050 },
+    { "args": [0], "expected": 0 },
+    { "args": [-3], "expected": 0, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Siapkan variabel penampung bernilai 0.",
+    "Tambahkan setiap i dari 1 sampai n ke penampung. Atau pakai rumus n(n+1)/2."
+  ],
+  "explanation": "jumlah-1-sampai-n.md",
+  "commonMistakes": [
+    { "text": "Perulangan berhenti di n − 1 (batas eksklusif).", "failsTest": 0 },
+    { "text": "Memakai rumus tanpa menangani n negatif.", "failsTest": 5 }
+  ],
+  "solutions": {
+    "javascript": "function jumlahSampai(n) {\n  let total = 0;\n  for (let i = 1; i <= n; i++) total += i;\n  return total;\n}",
+    "python": "def jumlah_sampai(n):\n    if n < 1:\n        return 0\n    return n * (n + 1) // 2"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

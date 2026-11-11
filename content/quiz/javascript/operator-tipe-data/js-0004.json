@@ -1,0 +1,18 @@
+{
+  "id": "js-0004",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "operator-tipe-data",
+  "level": "Sulit",
+  "title": "typeof yang menjebak",
+  "code": "console.log(typeof null);\nconsole.log(typeof []);\nconsole.log(typeof NaN);\nconsole.log(typeof function () {});",
+  "answer": "object\nobject\nnumber\nfunction",
+  "explain": "typeof null adalah \"object\" (kesalahan historis JavaScript). Array juga \"object\". NaN bertipe \"number\". Fungsi punya typeof khusus \"function\".",
+  "concepts": ["typeof"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

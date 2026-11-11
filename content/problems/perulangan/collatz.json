@@ -1,0 +1,42 @@
+{
+  "id": "collatz",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "perulangan",
+  "level": "Sulit",
+  "title": "Langkah Collatz",
+  "desc": "Mulai dari bilangan bulat positif n. Jika genap, bagi 2. Jika ganjil, kalikan 3 lalu tambah 1. Ulangi sampai n menjadi 1. Kembalikan jumlah langkah yang dibutuhkan. Untuk n = 1 jawabannya 0.",
+  "tags": ["while", "simulasi"],
+  "function": { "name": "langkahCollatz", "params": [{ "name": "n", "type": "int" }], "returns": "int" },
+  "tests": [
+    { "args": [1], "expected": 0 },
+    { "args": [2], "expected": 1 },
+    { "args": [3], "expected": 7 },
+    { "args": [6], "expected": 8 },
+    { "args": [7], "expected": 16 },
+    { "args": [27], "expected": 111, "hidden": true },
+    { "args": [97], "expected": 118, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Gunakan while karena jumlah pengulangan tidak diketahui di awal.",
+    "Hitung langkah setiap kali n berubah, berhenti saat n == 1."
+  ],
+  "explanation": "collatz.md",
+  "commonMistakes": [
+    { "text": "Menghitung angka awal sebagai langkah sehingga hasil kelebihan 1.", "failsTest": 0 },
+    { "text": "Memakai pembagian biasa di Python (/) sehingga n menjadi float.", "failsTest": 3 }
+  ],
+  "solutions": {
+    "javascript": "function langkahCollatz(n) {\n  let langkah = 0;\n  while (n !== 1) {\n    n = n % 2 === 0 ? n / 2 : 3 * n + 1;\n    langkah++;\n  }\n  return langkah;\n}",
+    "python": "def langkah_collatz(n):\n    langkah = 0\n    while n != 1:\n        n = n // 2 if n % 2 == 0 else 3 * n + 1\n        langkah += 1\n    return langkah"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

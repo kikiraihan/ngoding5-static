@@ -1,0 +1,18 @@
+{
+  "id": "py-0010",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "string-koleksi",
+  "level": "Sedang",
+  "title": "Default argumen list",
+  "code": "def tambah(x, daftar=[]):\n    daftar.append(x)\n    return daftar\n\ntambah(1)\ntambah(2)\nprint(tambah(3))",
+  "answer": "[1, 2, 3]",
+  "explain": "Nilai bawaan dibuat sekali saat fungsi didefinisikan, bukan setiap dipanggil. Ketiga panggilan memakai list yang sama: [1, 2, 3]. Gunakan daftar=None lalu buat list baru di dalam fungsi.",
+  "concepts": ["default argumen", "mutable"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}

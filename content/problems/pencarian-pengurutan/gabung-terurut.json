@@ -1,0 +1,49 @@
+{
+  "id": "gabung-terurut",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "pencarian-pengurutan",
+  "level": "Sulit",
+  "title": "Gabung Dua Array Terurut",
+  "desc": "a dan b masing-masing sudah terurut naik. Gabungkan menjadi satu array terurut naik tanpa memakai sort bawaan. Elemen sama tetap dimasukkan semuanya.",
+  "tags": ["merge", "dua-penunjuk"],
+  "function": {
+    "name": "gabungTerurut",
+    "params": [
+      { "name": "a", "type": "int[]" },
+      { "name": "b", "type": "int[]" }
+    ],
+    "returns": "int[]"
+  },
+  "tests": [
+    { "args": [[1, 3, 5], [2, 4, 6]], "expected": [1, 2, 3, 4, 5, 6] },
+    { "args": [[], [1, 2]], "expected": [1, 2] },
+    { "args": [[1, 2], []], "expected": [1, 2] },
+    { "args": [[], []], "expected": [] },
+    { "args": [[1, 1, 4], [1, 2, 9, 10]], "expected": [1, 1, 1, 2, 4, 9, 10], "hidden": true },
+    { "args": [[-3, 0], [-5, -4, 7]], "expected": [-5, -4, -3, 0, 7], "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Pakai dua penunjuk, satu untuk tiap array.",
+    "Ambil yang lebih kecil di antara a[i] dan b[j], lalu majukan penunjuknya.",
+    "Jika salah satu habis, sisa array lain tinggal ditempel."
+  ],
+  "explanation": "gabung-terurut.md",
+  "commonMistakes": [
+    { "text": "Lupa menempel sisa array setelah perulangan.", "failsTest": 0 },
+    { "text": "Perulangan berhenti saat salah satu kosong sejak awal.", "failsTest": 1 }
+  ],
+  "solutions": {
+    "javascript": "function gabungTerurut(a, b) {\n  const out = [];\n  let i = 0, j = 0;\n  while (i < a.length && j < b.length) out.push(a[i] <= b[j] ? a[i++] : b[j++]);\n  while (i < a.length) out.push(a[i++]);\n  while (j < b.length) out.push(b[j++]);\n  return out;\n}",
+    "python": "def gabung_terurut(a, b):\n    out = []\n    i = j = 0\n    while i < len(a) and j < len(b):\n        if a[i] <= b[j]:\n            out.append(a[i])\n            i += 1\n        else:\n            out.append(b[j])\n            j += 1\n    return out + a[i:] + b[j:]"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

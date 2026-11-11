@@ -1,0 +1,40 @@
+{
+  "id": "kapital-tiap-kata",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "string",
+  "level": "Sedang",
+  "title": "Kapital Tiap Kata",
+  "desc": "Ubah huruf pertama setiap kata menjadi kapital dan sisanya huruf kecil. Kata dipisahkan satu spasi. Pertahankan spasi apa adanya (termasuk spasi ganda).",
+  "tags": ["string", "split"],
+  "function": { "name": "kapitalKata", "params": [{ "name": "s", "type": "str" }], "returns": "str" },
+  "tests": [
+    { "args": ["halo dunia"], "expected": "Halo Dunia" },
+    { "args": ["bELAJAR koDING"], "expected": "Belajar Koding" },
+    { "args": ["a"], "expected": "A" },
+    { "args": [""], "expected": "" },
+    { "args": ["dua  spasi"], "expected": "Dua  Spasi", "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Pecah string berdasarkan satu spasi; kata kosong tetap disimpan.",
+    "Untuk setiap kata: huruf pertama kapital + sisanya kecil, lalu gabungkan dengan spasi."
+  ],
+  "explanation": "kapital-tiap-kata.md",
+  "commonMistakes": [
+    { "text": "Lupa mengecilkan sisa huruf.", "failsTest": 1 },
+    { "text": "Memakai split pada spasi berulang sehingga spasi ganda hilang.", "failsTest": 4 }
+  ],
+  "solutions": {
+    "javascript": "function kapitalKata(s) {\n  return s.split(\" \").map(w => w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w).join(\" \");\n}",
+    "python": "def kapital_kata(s):\n    return \" \".join(w[:1].upper() + w[1:].lower() for w in s.split(\" \"))"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "js-0015",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "fungsi-rekursi",
+  "level": "Sedang",
+  "title": "Closure penghitung",
+  "code": "function buatPenghitung() {\n  let n = 0;\n  return () => ++n;\n}\nconst a = buatPenghitung();\nconst b = buatPenghitung();\na(); a();\nconsole.log(a(), b());",
+  "answer": "3 1",
+  "explain": "Setiap panggilan buatPenghitung membuat variabel n sendiri. a sudah dipanggil dua kali, panggilan ketiga mengembalikan 3. b baru dipanggil sekali: 1.",
+  "concepts": ["closure"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

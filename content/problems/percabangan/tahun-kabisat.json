@@ -1,0 +1,41 @@
+{
+  "id": "tahun-kabisat",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "percabangan",
+  "level": "Mudah",
+  "title": "Tahun Kabisat",
+  "desc": "Tentukan apakah tahun termasuk tahun kabisat. Aturannya: habis dibagi 4 adalah kabisat, kecuali habis dibagi 100. Namun tahun yang habis dibagi 400 tetap kabisat. Kembalikan true atau false.",
+  "tags": ["modulo", "logika-boolean"],
+  "function": { "name": "isKabisat", "params": [{ "name": "tahun", "type": "int" }], "returns": "bool" },
+  "tests": [
+    { "args": [2024], "expected": true },
+    { "args": [2023], "expected": false },
+    { "args": [1900], "expected": false },
+    { "args": [2000], "expected": true },
+    { "args": [2100], "expected": false, "hidden": true },
+    { "args": [1600], "expected": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Ada tiga aturan; tentukan mana yang paling kuat.",
+    "Aturan 400 mengalahkan aturan 100, dan aturan 100 mengalahkan aturan 4."
+  ],
+  "explanation": "tahun-kabisat.md",
+  "commonMistakes": [
+    { "text": "Hanya mengecek habis dibagi 4, sehingga 1900 dianggap kabisat.", "failsTest": 2 },
+    { "text": "Lupa pengecualian 400, sehingga 2000 dianggap bukan kabisat.", "failsTest": 3 }
+  ],
+  "solutions": {
+    "javascript": "function isKabisat(tahun) {\n  if (tahun % 400 === 0) return true;\n  if (tahun % 100 === 0) return false;\n  return tahun % 4 === 0;\n}",
+    "python": "def is_kabisat(tahun):\n    return tahun % 4 == 0 and (tahun % 100 != 0 or tahun % 400 == 0)"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

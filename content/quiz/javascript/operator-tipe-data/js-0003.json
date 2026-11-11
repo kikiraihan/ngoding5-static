@@ -1,0 +1,18 @@
+{
+  "id": "js-0003",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "operator-tipe-data",
+  "level": "Sedang",
+  "title": "Sama dengan longgar",
+  "code": "console.log(0 == \"0\");\nconsole.log(0 === \"0\");\nconsole.log(null == undefined);\nconsole.log(NaN === NaN);",
+  "answer": "true\nfalse\ntrue\nfalse",
+  "explain": "== mengonversi tipe sehingga 0 == \"0\" true, sedangkan === tidak (false). null == undefined bernilai true menurut aturan khusus. NaN tidak sama dengan apa pun, termasuk dirinya: false.",
+  "concepts": ["==", "===", "koersi"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

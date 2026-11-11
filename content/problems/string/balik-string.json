@@ -1,0 +1,43 @@
+{
+  "id": "balik-string",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "string",
+  "level": "Mudah",
+  "title": "Balik String",
+  "desc": "Kembalikan string s dalam urutan terbalik. Contoh: \"halo\" menjadi \"olah\".",
+  "tags": ["string", "indeks"],
+  "function": { "name": "balikString", "params": [{ "name": "s", "type": "str" }], "returns": "str" },
+  "tests": [
+    { "args": ["halo"], "expected": "olah" },
+    { "args": ["a"], "expected": "a" },
+    { "args": [""], "expected": "" },
+    { "args": ["Ngoding5"], "expected": "5gnidogN" },
+    { "args": ["kasur rusak"], "expected": "kasur rusak", "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Telusuri string dari indeks terakhir ke indeks 0.",
+    "Di JavaScript: s.split(\"\").reverse().join(\"\"). Di Python: s[::-1]."
+  ],
+  "explanation": "balik-string.md",
+  "commonMistakes": [
+    {
+      "text": "Perulangan mulai dari s.length (di luar indeks) sehingga muncul \"undefined\".",
+      "failsTest": 0
+    },
+    { "text": "Lupa menangani string kosong.", "failsTest": 2 }
+  ],
+  "solutions": {
+    "javascript": "function balikString(s) {\n  let hasil = \"\";\n  for (let i = s.length - 1; i >= 0; i--) hasil += s[i];\n  return hasil;\n}",
+    "python": "def balik_string(s):\n    return s[::-1]"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

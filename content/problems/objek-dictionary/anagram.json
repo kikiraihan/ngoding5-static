@@ -1,0 +1,51 @@
+{
+  "id": "anagram",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "objek-dictionary",
+  "level": "Sedang",
+  "title": "Anagram",
+  "desc": "Dua string adalah anagram jika tersusun dari huruf yang sama dengan jumlah yang sama, hanya urutannya berbeda. Abaikan spasi dan huruf besar/kecil. Kembalikan true jika a dan b anagram.",
+  "tags": ["dictionary", "string", "penghitungan"],
+  "function": {
+    "name": "isAnagram",
+    "params": [
+      { "name": "a", "type": "str" },
+      { "name": "b", "type": "str" }
+    ],
+    "returns": "bool"
+  },
+  "tests": [
+    { "args": ["listen", "silent"], "expected": true },
+    { "args": ["halo", "hola"], "expected": true },
+    { "args": ["abc", "abcc"], "expected": false },
+    { "args": ["", ""], "expected": true },
+    { "args": ["Dormitory", "Dirty room"], "expected": true, "hidden": true },
+    { "args": ["aab", "abb"], "expected": false, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Bersihkan kedua string: huruf kecil, tanpa spasi.",
+    "Hitung frekuensi setiap huruf lalu bandingkan kedua hitungan, atau urutkan hurufnya."
+  ],
+  "explanation": "anagram.md",
+  "commonMistakes": [
+    {
+      "text": "Hanya membandingkan panjang dan himpunan huruf, sehingga \"aab\" dan \"abb\" dianggap anagram.",
+      "failsTest": 5
+    },
+    { "text": "Tidak membuang spasi.", "failsTest": 4 }
+  ],
+  "solutions": {
+    "javascript": "function isAnagram(a, b) {\n  const bersih = s => s.toLowerCase().replace(/ /g, \"\");\n  a = bersih(a); b = bersih(b);\n  if (a.length !== b.length) return false;\n  const hitung = {};\n  for (const ch of a) hitung[ch] = (hitung[ch] || 0) + 1;\n  for (const ch of b) {\n    if (!hitung[ch]) return false;\n    hitung[ch]--;\n  }\n  return true;\n}",
+    "python": "def is_anagram(a, b):\n    def bersih(s):\n        return sorted(s.lower().replace(\" \", \"\"))\n    return bersih(a) == bersih(b)"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

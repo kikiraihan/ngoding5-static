@@ -1,0 +1,46 @@
+[
+  {
+    "id": "javascript",
+    "label": "JavaScript",
+    "short": "JS",
+    "ext": "js",
+    "prefix": "js",
+    "runnable": true,
+    "timeoutMs": 3000,
+    "indent": "  ",
+    "comment": "//",
+    "naming": "camelCase",
+    "types": {
+      "int": "number",
+      "float": "number",
+      "bool": "boolean",
+      "str": "string",
+      "int[]": "number[]",
+      "str[]": "string[]",
+      "int[][]": "number[][]",
+      "dict<str,int>": "object"
+    }
+  },
+  {
+    "id": "python",
+    "label": "Python",
+    "short": "Py",
+    "ext": "py",
+    "prefix": "py",
+    "runnable": true,
+    "timeoutMs": 4000,
+    "indent": "    ",
+    "comment": "#",
+    "naming": "snake_case",
+    "types": {
+      "int": "int",
+      "float": "float",
+      "bool": "bool",
+      "str": "str",
+      "int[]": "list[int]",
+      "str[]": "list[str]",
+      "int[][]": "list[list[int]]",
+      "dict<str,int>": "dict[str, int]"
+    }
+  }
+]

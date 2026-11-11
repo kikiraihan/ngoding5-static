@@ -1,0 +1,37 @@
+{
+  "id": "jumlah-array-rekursif",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "rekursi",
+  "level": "Mudah",
+  "title": "Jumlah Array Rekursif",
+  "desc": "Jumlahkan semua elemen arr secara rekursif (tanpa for/while). Array kosong berjumlah 0.",
+  "tags": ["rekursi", "array"],
+  "function": { "name": "jumlahRekursif", "params": [{ "name": "arr", "type": "int[]" }], "returns": "int" },
+  "tests": [
+    { "args": [[1, 2, 3, 4]], "expected": 10 },
+    { "args": [[]], "expected": 0 },
+    { "args": [[5]], "expected": 5 },
+    { "args": [[-1, 1, -1]], "expected": -1 },
+    { "args": [[10, 20, 30]], "expected": 60, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": ["Basis: array kosong → 0.", "Jumlah = elemen pertama + jumlah sisa array."],
+  "explanation": "jumlah-array-rekursif.md",
+  "commonMistakes": [
+    { "text": "Basis hanya untuk panjang 1 sehingga array kosong error.", "failsTest": 1 },
+    { "text": "Memotong array dengan cara yang tidak memperkecil masalah.", "failsTest": 0 }
+  ],
+  "solutions": {
+    "javascript": "function jumlahRekursif(arr) {\n  if (arr.length === 0) return 0;\n  return arr[0] + jumlahRekursif(arr.slice(1));\n}",
+    "python": "def jumlah_rekursif(arr):\n    if not arr:\n        return 0\n    return arr[0] + jumlah_rekursif(arr[1:])"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

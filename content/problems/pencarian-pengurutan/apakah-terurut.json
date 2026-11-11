@@ -1,0 +1,37 @@
+{
+  "id": "apakah-terurut",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "pencarian-pengurutan",
+  "level": "Mudah",
+  "title": "Apakah Terurut?",
+  "desc": "Kembalikan true jika arr terurut naik (setiap elemen ≤ elemen setelahnya), false jika tidak. Array kosong atau berisi satu elemen dianggap terurut.",
+  "tags": ["array", "perbandingan"],
+  "function": { "name": "apakahTerurut", "params": [{ "name": "arr", "type": "int[]" }], "returns": "bool" },
+  "tests": [
+    { "args": [[1, 2, 2, 5]], "expected": true },
+    { "args": [[3, 1, 2]], "expected": false },
+    { "args": [[]], "expected": true },
+    { "args": [[7]], "expected": true },
+    { "args": [[1, 2, 3, 0]], "expected": false, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": ["Cukup bandingkan setiap pasangan bertetangga.", "Jika ada arr[i] > arr[i+1], langsung false."],
+  "explanation": "apakah-terurut.md",
+  "commonMistakes": [
+    { "text": "Memakai < sehingga elemen sama dianggap tidak terurut.", "failsTest": 0 },
+    { "text": "Indeks i+1 keluar batas pada elemen terakhir.", "failsTest": 4 }
+  ],
+  "solutions": {
+    "javascript": "function apakahTerurut(arr) {\n  for (let i = 0; i + 1 < arr.length; i++) if (arr[i] > arr[i + 1]) return false;\n  return true;\n}",
+    "python": "def apakah_terurut(arr):\n    return all(arr[i] <= arr[i + 1] for i in range(len(arr) - 1))"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

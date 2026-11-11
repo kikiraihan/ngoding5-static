@@ -1,0 +1,18 @@
+{
+  "id": "py-0012",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "string-koleksi",
+  "level": "Sulit",
+  "title": "List perkalian",
+  "code": "grid = [[0] * 2] * 3\ngrid[0][0] = 1\nprint(grid)",
+  "answer": "[[1, 0], [1, 0], [1, 0]]",
+  "explain": "[[0] * 2] * 3 membuat tiga referensi ke list yang sama, bukan tiga list berbeda. Mengubah grid[0][0] terlihat di semua baris. Gunakan [[0] * 2 for _ in range(3)].",
+  "concepts": ["referensi", "list bersarang"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}

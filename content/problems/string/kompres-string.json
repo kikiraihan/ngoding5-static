@@ -1,0 +1,43 @@
+{
+  "id": "kompres-string",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "string",
+  "level": "Sulit",
+  "title": "Kompres String",
+  "desc": "Kompres string dengan run-length encoding: setiap deretan karakter sama yang berurutan ditulis sebagai karakter diikuti jumlahnya. Contoh \"aaaabbbc\" menjadi \"a4b3c1\". Jika hasil kompresi tidak lebih pendek dari string asli, kembalikan string asli (misal \"aaabcc\" → \"a3b1c2\" sama panjang, jadi yang dikembalikan \"aaabcc\").",
+  "tags": ["string", "run-length"],
+  "function": { "name": "kompres", "params": [{ "name": "s", "type": "str" }], "returns": "str" },
+  "tests": [
+    { "args": ["aaaabbbc"], "expected": "a4b3c1" },
+    { "args": ["abc"], "expected": "abc" },
+    { "args": [""], "expected": "" },
+    { "args": ["aaaaaaaaaaaa"], "expected": "a12" },
+    { "args": ["aaabcc"], "expected": "aaabcc", "hidden": true },
+    { "args": ["zzzzzy"], "expected": "z5y1", "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Simpan karakter yang sedang dihitung dan penghitungnya.",
+    "Saat karakter berubah (atau string habis), tulis karakter + jumlahnya.",
+    "Bandingkan panjang hasil dengan panjang asli di akhir."
+  ],
+  "explanation": "kompres-string.md",
+  "commonMistakes": [
+    { "text": "Lupa menulis kelompok terakhir setelah perulangan selesai.", "failsTest": 0 },
+    { "text": "Selalu mengembalikan hasil kompresi walau lebih panjang.", "failsTest": 1 },
+    { "text": "Jumlah dua digit (12) ditulis salah.", "failsTest": 3 }
+  ],
+  "solutions": {
+    "javascript": "function kompres(s) {\n  let out = \"\";\n  for (let i = 0; i < s.length; ) {\n    let j = i;\n    while (j < s.length && s[j] === s[i]) j++;\n    out += s[i] + (j - i);\n    i = j;\n  }\n  return out.length < s.length ? out : s;\n}",
+    "python": "def kompres(s):\n    out = []\n    i = 0\n    while i < len(s):\n        j = i\n        while j < len(s) and s[j] == s[i]:\n            j += 1\n        out.append(s[i] + str(j - i))\n        i = j\n    hasil = \"\".join(out)\n    return hasil if len(hasil) < len(s) else s"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

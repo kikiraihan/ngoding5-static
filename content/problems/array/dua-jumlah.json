@@ -1,0 +1,49 @@
+{
+  "id": "dua-jumlah",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "array",
+  "level": "Sedang",
+  "title": "Dua Jumlah",
+  "desc": "Cari dua indeks berbeda i < j sehingga arr[i] + arr[j] = target. Kembalikan [i, j]. Jika ada beberapa pasangan, pilih yang j-nya paling kecil; jika j sama, pilih i paling kecil. Jika tidak ada, kembalikan [].",
+  "tags": ["array", "hash-map"],
+  "function": {
+    "name": "duaJumlah",
+    "params": [
+      { "name": "arr", "type": "int[]" },
+      { "name": "target", "type": "int" }
+    ],
+    "returns": "int[]"
+  },
+  "tests": [
+    { "args": [[2, 7, 11, 15], 9], "expected": [0, 1] },
+    { "args": [[3, 2, 4], 6], "expected": [1, 2] },
+    { "args": [[3, 3], 6], "expected": [0, 1] },
+    { "args": [[1, 2, 3], 7], "expected": [] },
+    { "args": [[1, 5, 1, 5], 6], "expected": [0, 1], "hidden": true },
+    { "args": [[0, 4, 3, 0], 0], "expected": [0, 3], "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Cara lambat: dua perulangan bersarang. Coba cara satu kali lewat.",
+    "Simpan angka yang sudah dilihat beserta indeks pertamanya di dictionary.",
+    "Untuk setiap j, cek apakah target − arr[j] sudah pernah dilihat."
+  ],
+  "explanation": "dua-jumlah.md",
+  "commonMistakes": [
+    { "text": "Memakai elemen yang sama dua kali (i = j).", "failsTest": 1 },
+    { "text": "Menimpa indeks lama di dictionary sehingga i bukan yang terkecil.", "failsTest": 4 }
+  ],
+  "solutions": {
+    "javascript": "function duaJumlah(arr, target) {\n  const lihat = new Map();\n  for (let j = 0; j < arr.length; j++) {\n    const butuh = target - arr[j];\n    if (lihat.has(butuh)) return [lihat.get(butuh), j];\n    if (!lihat.has(arr[j])) lihat.set(arr[j], j);\n  }\n  return [];\n}",
+    "python": "def dua_jumlah(arr, target):\n    for j in range(len(arr)):\n        for i in range(j):\n            if arr[i] + arr[j] == target:\n                return [i, j]\n    return []"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

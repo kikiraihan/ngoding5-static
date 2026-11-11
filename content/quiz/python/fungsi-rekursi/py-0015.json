@@ -1,0 +1,18 @@
+{
+  "id": "py-0015",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "fungsi-rekursi",
+  "level": "Sedang",
+  "title": "Rekursi jumlah digit",
+  "code": "def f(n):\n    if n < 10:\n        return n\n    return f(n // 10) + n % 10\n\nprint(f(1234))\nprint(f(9))",
+  "answer": "10\n9",
+  "explain": "f(1234) = f(123) + 4 = f(12) + 3 + 4 = f(1) + 2 + 3 + 4 = 10. Untuk 9 langsung basis: 9.",
+  "concepts": ["rekursi"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}

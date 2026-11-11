@@ -1,0 +1,49 @@
+{
+  "id": "hitung-frekuensi",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "objek-dictionary",
+  "level": "Mudah",
+  "title": "Hitung Frekuensi Kata",
+  "desc": "Diberi daftar kata, kembalikan objek/dictionary yang memetakan setiap kata ke jumlah kemunculannya.",
+  "tags": ["dictionary", "penghitungan"],
+  "function": {
+    "name": "hitungFrekuensi",
+    "params": [
+      { "name": "kata", "type": "str[]" }
+    ],
+    "returns": "dict<str,int>"
+  },
+  "tests": [
+    { "args": [["apel", "jeruk", "apel"]], "expected": { "apel": 2, "jeruk": 1 } },
+    { "args": [[]], "expected": {} },
+    { "args": [["a"]], "expected": { "a": 1 } },
+    { "args": [["x", "x", "x", "y"]], "expected": { "x": 3, "y": 1 } },
+    { "args": [["Apel", "apel"]], "expected": { "Apel": 1, "apel": 1 }, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Mulai dari dictionary kosong.",
+    "Untuk setiap kata: jika belum ada, set 1; jika sudah ada, tambah 1."
+  ],
+  "explanation": "hitung-frekuensi.md",
+  "commonMistakes": [
+    {
+      "text": "Menambah nilai kunci yang belum ada (undefined + 1 = NaN di JavaScript).",
+      "failsTest": 0
+    },
+    { "text": "Menyamakan huruf besar dan kecil padahal tidak diminta.", "failsTest": 4 }
+  ],
+  "solutions": {
+    "javascript": "function hitungFrekuensi(kata) {\n  const hasil = {};\n  for (const k of kata) hasil[k] = (hasil[k] || 0) + 1;\n  return hasil;\n}",
+    "python": "def hitung_frekuensi(kata):\n    hasil = {}\n    for k in kata:\n        hasil[k] = hasil.get(k, 0) + 1\n    return hasil"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

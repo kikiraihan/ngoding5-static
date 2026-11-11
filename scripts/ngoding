@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+# CLI pengelola konten Ngoding5. Jalankan dari root repo: scripts/ngoding <perintah>
+# Semua perintah idempoten; penghapusan butuh --yes.
+set -euo pipefail
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$DIR/.." && pwd)"
+cd "$ROOT"
+
+NODE="${NODE:-node}"
+export NGODING_PYTHON="${NGODING_PYTHON:-python3}"
+
+usage() {
+  cat <<'USAGE'
+ngoding — CLI konten Ngoding5
+
+  new problem --tema <slug> --level <lv> --id <slug> [--title "..."]
+  new quiz --lang <js|py> --tema <slug> --level <lv> [--count N]
+  validate [path|id...] [--strict] [--require-verified]
+                                       cek schema, slug unik, tema/level, duplikat, MD ada
+  verify [path|id...] [--lang js,py]  jalankan solusi & kode quiz, tulis field verification
+  fix-expected <id> [--from js|py] [--yes]
+  stats [--json]                       cakupan per tema × level × bahasa
+  dedupe [--threshold 0.6]             cari soal mirip
+  remove <id> [--yes]                  hapus soal beserta MD-nya
+  build                                content/ → public/data/
+  check                                validate + verify + build (sebelum commit & di CI)
+USAGE
+}
+
+need_python() {
+  if ! command -v "$NGODING_PYTHON" >/dev/null 2>&1; then
+    echo "✗ Python ($NGODING_PYTHON) tidak ditemukan. Butuh Python ≥ 3.10." >&2
+    exit 1
+  fi
+}
+
+cmd="${1:-help}"
+shift || true
+
+case "$cmd" in
+  new)          exec "$NODE" scripts/new.mjs "$@" ;;
+  validate)     exec "$NODE" scripts/validate.mjs "$@" ;;
+  verify)       need_python; exec "$NODE" scripts/verify.mjs "$@" ;;
+  fix-expected) need_python; exec "$NODE" scripts/fix-expected.mjs "$@" ;;
+  stats)        exec "$NODE" scripts/stats.mjs "$@" ;;
+  dedupe)       exec "$NODE" scripts/dedupe.mjs "$@" ;;
+  remove)       exec "$NODE" scripts/remove.mjs "$@" ;;
+  build)        exec "$NODE" scripts/build-data.mjs "$@" ;;
+  check)
+    need_python
+    echo "── validate"; "$NODE" scripts/validate.mjs --no-warn
+    echo "── verify";   "$NODE" scripts/verify.mjs --quiet "$@"
+    echo "── validate (ketat setelah verify)"; "$NODE" scripts/validate.mjs --no-warn --require-verified --lock
+    echo "── build";    "$NODE" scripts/build-data.mjs
+    echo "✓ ngoding check selesai"
+    ;;
+  help|-h|--help) usage ;;
+  *) echo "Perintah tidak dikenal: $cmd" >&2; usage; exit 1 ;;
+esac

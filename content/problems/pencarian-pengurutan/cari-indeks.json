@@ -1,0 +1,50 @@
+{
+  "id": "cari-indeks",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "pencarian-pengurutan",
+  "level": "Mudah",
+  "title": "Cari Indeks",
+  "desc": "Kembalikan indeks pertama tempat nilai target muncul di arr. Jika tidak ada, kembalikan -1. Jangan memakai indexOf atau index.",
+  "tags": ["pencarian-linear"],
+  "function": {
+    "name": "cariIndeks",
+    "params": [
+      { "name": "arr", "type": "int[]" },
+      { "name": "target", "type": "int" }
+    ],
+    "returns": "int"
+  },
+  "tests": [
+    { "args": [[4, 2, 7, 2], 2], "expected": 1 },
+    { "args": [[1, 2, 3], 5], "expected": -1 },
+    { "args": [[], 1], "expected": -1 },
+    { "args": [[9], 9], "expected": 0 },
+    { "args": [[5, 5, 5], 5], "expected": 0, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Telusuri dari kiri ke kanan.",
+    "Begitu ketemu, langsung kembalikan indeksnya. Setelah perulangan selesai, kembalikan -1."
+  ],
+  "explanation": "cari-indeks.md",
+  "commonMistakes": [
+    { "text": "Mengembalikan indeks terakhir, bukan pertama.", "failsTest": 0 },
+    {
+      "text": "Mengembalikan -1 di dalam perulangan (pada elemen pertama yang tidak cocok).",
+      "failsTest": 0
+    }
+  ],
+  "solutions": {
+    "javascript": "function cariIndeks(arr, target) {\n  for (let i = 0; i < arr.length; i++) if (arr[i] === target) return i;\n  return -1;\n}",
+    "python": "def cari_indeks(arr, target):\n    for i, x in enumerate(arr):\n        if x == target:\n            return i\n    return -1"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

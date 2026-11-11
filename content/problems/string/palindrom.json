@@ -1,0 +1,45 @@
+{
+  "id": "palindrom",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "string",
+  "level": "Sedang",
+  "title": "Palindrom",
+  "desc": "Tentukan apakah s adalah palindrom, yaitu sama jika dibaca dari depan maupun belakang. Abaikan huruf besar/kecil dan semua karakter selain huruf dan angka. Contoh: \"Kasur ini rusak\" adalah palindrom.",
+  "tags": ["string", "dua-penunjuk"],
+  "function": { "name": "isPalindrom", "params": [{ "name": "s", "type": "str" }], "returns": "bool" },
+  "tests": [
+    { "args": ["katak"], "expected": true },
+    { "args": ["Kasur ini rusak"], "expected": true },
+    { "args": ["ngoding"], "expected": false },
+    { "args": [""], "expected": true },
+    { "args": ["A man, a plan, a canal: Panama"], "expected": true },
+    { "args": ["ab"], "expected": false, "hidden": true },
+    { "args": ["12321"], "expected": true, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Bersihkan string dulu: huruf kecil, buang selain huruf dan angka.",
+    "Bandingkan string bersih dengan kebalikannya, atau pakai dua penunjuk dari ujung kiri dan kanan."
+  ],
+  "explanation": "palindrom.md",
+  "commonMistakes": [
+    {
+      "text": "Tidak membuang spasi, sehingga \"Kasur ini rusak\" dianggap bukan palindrom.",
+      "failsTest": 1
+    },
+    { "text": "Tidak menyamakan huruf besar/kecil.", "failsTest": 4 }
+  ],
+  "solutions": {
+    "javascript": "function isPalindrom(s) {\n  const t = s.toLowerCase().replace(/[^a-z0-9]/g, \"\");\n  let i = 0, j = t.length - 1;\n  while (i < j) {\n    if (t[i] !== t[j]) return false;\n    i++; j--;\n  }\n  return true;\n}",
+    "python": "def is_palindrom(s):\n    t = [ch for ch in s.lower() if ch.isalnum()]\n    return t == t[::-1]"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

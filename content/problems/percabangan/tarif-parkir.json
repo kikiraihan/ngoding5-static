@@ -1,0 +1,45 @@
+{
+  "id": "tarif-parkir",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "percabangan",
+  "level": "Sulit",
+  "title": "Tarif Parkir",
+  "desc": "Hitung tarif parkir dari lama parkir dalam menit. Aturan: 15 menit pertama gratis. Jika lebih dari 15 menit, jam pertama Rp5000, setiap jam berikutnya (atau sebagiannya) Rp3000. Biaya maksimal per hari Rp25000. Menit 0 atau negatif berarti 0. Hitungan jam dimulai dari menit ke-0 (bukan setelah 15 menit gratis).",
+  "tags": ["if-else", "pembulatan", "aturan-bisnis"],
+  "function": { "name": "tarifParkir", "params": [{ "name": "menit", "type": "int" }], "returns": "int" },
+  "tests": [
+    { "args": [10], "expected": 0 },
+    { "args": [15], "expected": 0 },
+    { "args": [16], "expected": 5000 },
+    { "args": [60], "expected": 5000 },
+    { "args": [61], "expected": 8000 },
+    { "args": [180], "expected": 11000 },
+    { "args": [600], "expected": 25000, "hidden": true },
+    { "args": [0], "expected": 0, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Ubah menit menjadi jumlah jam dengan pembulatan ke atas.",
+    "Jam ke-1 = 5000, sisanya (jam − 1) × 3000, lalu batasi dengan 25000.",
+    "Jam = ceil(menit / 60). Hati-hati, 60 menit tepat masih 1 jam."
+  ],
+  "explanation": "tarif-parkir.md",
+  "commonMistakes": [
+    { "text": "Membulatkan ke bawah, sehingga 61 menit dihitung 1 jam.", "failsTest": 4 },
+    { "text": "Lupa batas maksimal Rp25000.", "failsTest": 6 },
+    { "text": "Menganggap 15 menit sebagai berbayar.", "failsTest": 1 }
+  ],
+  "solutions": {
+    "javascript": "function tarifParkir(menit) {\n  if (menit <= 15) return 0;\n  const jam = Math.ceil(menit / 60);\n  const biaya = 5000 + (jam - 1) * 3000;\n  return Math.min(biaya, 25000);\n}",
+    "python": "def tarif_parkir(menit):\n    if menit <= 15:\n        return 0\n    jam = -(-menit // 60)\n    return min(5000 + (jam - 1) * 3000, 25000)"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

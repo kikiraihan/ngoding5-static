@@ -1,0 +1,40 @@
+{
+  "id": "faktorial",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "perulangan",
+  "level": "Mudah",
+  "title": "Faktorial",
+  "desc": "Kembalikan n! (n faktorial), yaitu 1 × 2 × … × n. Ingat bahwa 0! = 1. Nilai n selalu 0 sampai 15.",
+  "tags": ["for", "perkalian"],
+  "function": { "name": "faktorial", "params": [{ "name": "n", "type": "int" }], "returns": "int" },
+  "tests": [
+    { "args": [5], "expected": 120 },
+    { "args": [0], "expected": 1 },
+    { "args": [1], "expected": 1 },
+    { "args": [10], "expected": 3628800 },
+    { "args": [15], "expected": 1307674368000, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Penampung untuk perkalian dimulai dari 1, bukan 0.",
+    "Kalikan penampung dengan setiap i dari 2 sampai n."
+  ],
+  "explanation": "faktorial.md",
+  "commonMistakes": [
+    { "text": "Penampung dimulai dari 0 sehingga hasil selalu 0.", "failsTest": 0 },
+    { "text": "Mengembalikan 0 untuk n = 0.", "failsTest": 1 }
+  ],
+  "solutions": {
+    "javascript": "function faktorial(n) {\n  let hasil = 1;\n  for (let i = 2; i <= n; i++) hasil *= i;\n  return hasil;\n}",
+    "python": "def faktorial(n):\n    hasil = 1\n    for i in range(2, n + 1):\n        hasil *= i\n    return hasil"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

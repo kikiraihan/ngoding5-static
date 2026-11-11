@@ -1,0 +1,18 @@
+{
+  "id": "py-0016",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "fungsi-rekursi",
+  "level": "Sulit",
+  "title": "Closure di perulangan",
+  "code": "fs = [lambda: i for i in range(3)]\nprint([f() for f in fs])\ngs = [lambda i=i: i for i in range(3)]\nprint([g() for g in gs])",
+  "answer": "[2, 2, 2]\n[0, 1, 2]",
+  "explain": "Lambda menyimpan referensi ke variabel i, bukan nilainya saat dibuat (late binding). Saat dipanggil, i sudah 2 sehingga hasilnya [2, 2, 2]. Dengan argumen bawaan i=i, nilai dibekukan saat lambda dibuat: [0, 1, 2].",
+  "concepts": ["closure", "late binding", "lambda"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}

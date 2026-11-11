@@ -1,0 +1,72 @@
+{
+  "id": "permutasi-string",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "rekursi",
+  "level": "Sulit",
+  "title": "Permutasi String",
+  "desc": "Kembalikan semua permutasi unik dari karakter-karakter s, diurutkan secara leksikografis (urutan kamus). Panjang s maksimal 6. String kosong menghasilkan [\"\"].",
+  "tags": ["rekursi", "backtracking"],
+  "function": { "name": "permutasi", "params": [{ "name": "s", "type": "str" }], "returns": "str[]" },
+  "tests": [
+    { "args": ["abc"], "expected": ["abc", "acb", "bac", "bca", "cab", "cba"] },
+    { "args": ["a"], "expected": ["a"] },
+    { "args": [""], "expected": [""] },
+    { "args": ["aab"], "expected": ["aab", "aba", "baa"], "hidden": true },
+    { "args": ["ba"], "expected": ["ab", "ba"] },
+    {
+      "args": ["abcd"],
+      "expected": [
+        "abcd",
+        "abdc",
+        "acbd",
+        "acdb",
+        "adbc",
+        "adcb",
+        "bacd",
+        "badc",
+        "bcad",
+        "bcda",
+        "bdac",
+        "bdca",
+        "cabd",
+        "cadb",
+        "cbad",
+        "cbda",
+        "cdab",
+        "cdba",
+        "dabc",
+        "dacb",
+        "dbac",
+        "dbca",
+        "dcab",
+        "dcba"
+      ],
+      "hidden": true
+    }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Pilih satu karakter untuk posisi pertama, lalu permutasikan sisanya.",
+    "Untuk menghindari duplikat, lewati karakter yang sama di posisi yang sama, atau pakai set.",
+    "Urutkan hasil akhir."
+  ],
+  "explanation": "permutasi-string.md",
+  "commonMistakes": [
+    { "text": "Menghasilkan duplikat untuk huruf kembar seperti \"aab\".", "failsTest": 3 },
+    { "text": "Basis string kosong mengembalikan [] sehingga semua hasil hilang.", "failsTest": 2 },
+    { "text": "Lupa mengurutkan hasil.", "failsTest": 4 }
+  ],
+  "solutions": {
+    "javascript": "function permutasi(s) {\n  if (s.length === 0) return [\"\"];\n  const hasil = new Set();\n  for (let i = 0; i < s.length; i++) {\n    const sisa = s.slice(0, i) + s.slice(i + 1);\n    for (const p of permutasi(sisa)) hasil.add(s[i] + p);\n  }\n  return [...hasil].sort();\n}",
+    "python": "def permutasi(s):\n    chars = sorted(s)\n    hasil = []\n    dipakai = [False] * len(chars)\n\n    def cari(jalur):\n        if len(jalur) == len(chars):\n            hasil.append(\"\".join(jalur))\n            return\n        for i, ch in enumerate(chars):\n            if dipakai[i]:\n                continue\n            if i > 0 and chars[i] == chars[i - 1] and not dipakai[i - 1]:\n                continue\n            dipakai[i] = True\n            jalur.append(ch)\n            cari(jalur)\n            jalur.pop()\n            dipakai[i] = False\n\n    cari([])\n    return hasil"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

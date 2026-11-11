@@ -1,0 +1,18 @@
+{
+  "id": "js-0006",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "perulangan-kondisi",
+  "level": "Sedang",
+  "title": "Nilai truthy",
+  "code": "const nilai = [0, \"\", \"0\", [], null];\nlet n = 0;\nfor (const v of nilai) if (v) n++;\nconsole.log(n);",
+  "answer": "2",
+  "explain": "Nilai falsy: 0, \"\", null (juga undefined, NaN, false). \"0\" (string tidak kosong) dan [] (array, termasuk yang kosong) adalah truthy. Jadi n = 2.",
+  "concepts": ["truthy", "falsy"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

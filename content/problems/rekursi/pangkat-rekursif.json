@@ -1,0 +1,45 @@
+{
+  "id": "pangkat-rekursif",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "rekursi",
+  "level": "Mudah",
+  "title": "Pangkat Rekursif",
+  "desc": "Hitung a pangkat n (n ≥ 0) secara rekursif tanpa operator pangkat bawaan.",
+  "tags": ["rekursi", "basis"],
+  "function": {
+    "name": "pangkat",
+    "params": [
+      { "name": "a", "type": "int" },
+      { "name": "n", "type": "int" }
+    ],
+    "returns": "int"
+  },
+  "tests": [
+    { "args": [2, 10], "expected": 1024 },
+    { "args": [5, 0], "expected": 1 },
+    { "args": [3, 1], "expected": 3 },
+    { "args": [-2, 3], "expected": -8 },
+    { "args": [0, 0], "expected": 1, "hidden": true },
+    { "args": [7, 4], "expected": 2401 }
+  ],
+  "compare": "exact",
+  "hints": ["Basis: a⁰ = 1.", "Langkah rekursif: aⁿ = a × aⁿ⁻¹."],
+  "explanation": "pangkat-rekursif.md",
+  "commonMistakes": [
+    { "text": "Tidak ada kasus basis sehingga rekursi tak berhenti.", "failsTest": 1 },
+    { "text": "Basis n == 1 saja, sehingga n = 0 tak tertangani.", "failsTest": 1 }
+  ],
+  "solutions": {
+    "javascript": "function pangkat(a, n) {\n  if (n === 0) return 1;\n  return a * pangkat(a, n - 1);\n}",
+    "python": "def pangkat(a, n):\n    if n == 0:\n        return 1\n    setengah = pangkat(a, n // 2)\n    return setengah * setengah * (a if n % 2 else 1)"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

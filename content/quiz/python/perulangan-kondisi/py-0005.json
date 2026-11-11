@@ -1,0 +1,18 @@
+{
+  "id": "py-0005",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "perulangan-kondisi",
+  "level": "Mudah",
+  "title": "range bertingkat",
+  "code": "print(list(range(5)))\nprint(list(range(2, 10, 3)))\nprint(list(range(5, 0, -2)))",
+  "answer": "[0, 1, 2, 3, 4]\n[2, 5, 8]\n[5, 3, 1]",
+  "explain": "range(5) = 0..4. range(2, 10, 3) mulai 2 dengan langkah 3 sebelum 10: 2, 5, 8. range(5, 0, -2) turun: 5, 3, 1 (0 tidak termasuk).",
+  "concepts": ["range"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}

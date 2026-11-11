@@ -1,0 +1,46 @@
+{
+  "id": "kelompok-panjang",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "objek-dictionary",
+  "level": "Sedang",
+  "title": "Hitung per Panjang Kata",
+  "desc": "Diberi daftar kata, kembalikan dictionary yang memetakan panjang kata (sebagai string, misal \"3\") ke jumlah kata dengan panjang tersebut.",
+  "tags": ["dictionary", "pengelompokan"],
+  "function": {
+    "name": "hitungPerPanjang",
+    "params": [
+      { "name": "kata", "type": "str[]" }
+    ],
+    "returns": "dict<str,int>"
+  },
+  "tests": [
+    { "args": [["aku", "kamu", "dia", "kita"]], "expected": { "3": 2, "4": 2 } },
+    { "args": [[]], "expected": {} },
+    { "args": [[""]], "expected": { "0": 1 } },
+    {
+      "args": [["a", "bb", "cc", "ddd", "e"]],
+      "expected": { "1": 2, "2": 2, "3": 1 },
+      "hidden": true
+    }
+  ],
+  "compare": "exact",
+  "hints": ["Kunci adalah panjang kata, diubah menjadi string.", "Polanya sama dengan menghitung frekuensi."],
+  "explanation": "kelompok-panjang.md",
+  "commonMistakes": [
+    { "text": "Memakai kunci angka di Python sehingga tidak sama dengan \"3\".", "failsTest": 0 },
+    { "text": "Lupa kata kosong berpanjang 0.", "failsTest": 2 }
+  ],
+  "solutions": {
+    "javascript": "function hitungPerPanjang(kata) {\n  const hasil = {};\n  for (const k of kata) {\n    const key = String(k.length);\n    hasil[key] = (hasil[key] || 0) + 1;\n  }\n  return hasil;\n}",
+    "python": "def hitung_per_panjang(kata):\n    hasil = {}\n    for k in kata:\n        key = str(len(k))\n        hasil[key] = hasil.get(key, 0) + 1\n    return hasil"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

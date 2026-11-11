@@ -1,0 +1,18 @@
+{
+  "id": "py-0007",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "perulangan-kondisi",
+  "level": "Sedang",
+  "title": "and/or mengembalikan operand",
+  "code": "print(0 or \"kosong\")\nprint(3 and 5)\nprint(\"\" and 1)\nprint(None or 0 or [])",
+  "answer": "kosong\n5\n\n[]",
+  "explain": "or mengembalikan operand pertama yang truthy, atau operand terakhir jika semua falsy. and mengembalikan operand pertama yang falsy, atau operand terakhir. Jadi: \"kosong\", 5, \"\" (baris kosong), dan [].",
+  "concepts": ["and", "or", "short-circuit"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}

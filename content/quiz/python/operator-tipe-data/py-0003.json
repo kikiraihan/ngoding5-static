@@ -1,0 +1,18 @@
+{
+  "id": "py-0003",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "operator-tipe-data",
+  "level": "Sedang",
+  "title": "Bool juga int",
+  "code": "print(True + True)\nprint(True == 1)\nprint(isinstance(False, int))\nprint(sum([True, False, True]))",
+  "answer": "2\nTrue\nTrue\n2",
+  "explain": "bool adalah turunan int: True bernilai 1, False bernilai 0. Jadi True + True = 2, True == 1 benar, False adalah int, dan sum menghitung 2.",
+  "concepts": ["bool", "int"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}
