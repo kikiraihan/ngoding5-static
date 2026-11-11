@@ -40,7 +40,8 @@
   ],
   "solutions": {
     "javascript": "function cariBiner(arr, target) {\n  let kiri = 0, kanan = arr.length - 1;\n  while (kiri <= kanan) {\n    const tengah = Math.floor((kiri + kanan) / 2);\n    if (arr[tengah] === target) return tengah;\n    if (arr[tengah] < target) kiri = tengah + 1;\n    else kanan = tengah - 1;\n  }\n  return -1;\n}",
-    "python": "def cari_biner(arr, target):\n    kiri, kanan = 0, len(arr) - 1\n    while kiri <= kanan:\n        tengah = (kiri + kanan) // 2\n        if arr[tengah] == target:\n            return tengah\n        if arr[tengah] < target:\n            kiri = tengah + 1\n        else:\n            kanan = tengah - 1\n    return -1"
+    "python": "def cari_biner(arr, target):\n    kiri, kanan = 0, len(arr) - 1\n    while kiri <= kanan:\n        tengah = (kiri + kanan) // 2\n        if arr[tengah] == target:\n            return tengah\n        if arr[tengah] < target:\n            kiri = tengah + 1\n        else:\n            kanan = tengah - 1\n    return -1",
+    "go": "func cariBiner(arr []int, target int) int {\n\tkiri, kanan := 0, len(arr)-1\n\tfor kiri <= kanan {\n\t\ttengah := kiri + (kanan-kiri)/2\n\t\tswitch {\n\t\tcase arr[tengah] == target:\n\t\t\treturn tengah\n\t\tcase arr[tengah] < target:\n\t\t\tkiri = tengah + 1\n\t\tdefault:\n\t\t\tkanan = tengah - 1\n\t\t}\n\t}\n\treturn -1\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -48,6 +49,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

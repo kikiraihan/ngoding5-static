@@ -35,7 +35,8 @@
   ],
   "solutions": {
     "javascript": "function putarKanan(arr, k) {\n  const n = arr.length;\n  if (n === 0) return [];\n  k = k % n;\n  return arr.slice(n - k).concat(arr.slice(0, n - k));\n}",
-    "python": "def putar_kanan(arr, k):\n    n = len(arr)\n    if n == 0:\n        return []\n    k %= n\n    return arr[n - k:] + arr[:n - k]"
+    "python": "def putar_kanan(arr, k):\n    n = len(arr)\n    if n == 0:\n        return []\n    k %= n\n    return arr[n - k:] + arr[:n - k]",
+    "go": "func putarKanan(arr []int, k int) []int {\n\tn := len(arr)\n\thasil := make([]int, n)\n\tif n == 0 {\n\t\treturn hasil\n\t}\n\tfor i, x := range arr {\n\t\thasil[(i+k)%n] = x\n\t}\n\treturn hasil\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -43,6 +44,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

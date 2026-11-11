@@ -36,7 +36,8 @@
   ],
   "solutions": {
     "javascript": "function hitungFrekuensi(kata) {\n  const hasil = {};\n  for (const k of kata) hasil[k] = (hasil[k] || 0) + 1;\n  return hasil;\n}",
-    "python": "def hitung_frekuensi(kata):\n    hasil = {}\n    for k in kata:\n        hasil[k] = hasil.get(k, 0) + 1\n    return hasil"
+    "python": "def hitung_frekuensi(kata):\n    hasil = {}\n    for k in kata:\n        hasil[k] = hasil.get(k, 0) + 1\n    return hasil",
+    "go": "func hitungFrekuensi(kata []string) map[string]int {\n\thasil := map[string]int{}\n\tfor _, k := range kata {\n\t\thasil[k]++\n\t}\n\treturn hasil\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -44,6 +45,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

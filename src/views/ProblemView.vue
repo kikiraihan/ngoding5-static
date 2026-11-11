@@ -7,6 +7,7 @@ import ProblemPanel from '@/components/ProblemPanel.vue';
 import CodeEditor from '@/components/CodeEditor.vue';
 import TestResults from '@/components/TestResults.vue';
 import AskAiCopy from '@/components/AskAiCopy.vue';
+import LocalRunCopy from '@/components/LocalRunCopy.vue';
 import { useCatalog } from '@/stores/catalog';
 import { useSettings } from '@/stores/settings';
 import { useProgress } from '@/stores/progress';
@@ -16,7 +17,7 @@ import { setHead } from '@/lib/head';
 import { save } from '@/lib/storage';
 import { toast } from '@/lib/toast';
 import { preloadPython } from '@/lib/runners/python';
-import type { LangId, Problem } from '@/lib/types';
+import { asLangId, type LangId, type Problem } from '@/lib/types';
 
 const route = useRoute();
 const router = useRouter();
@@ -27,7 +28,7 @@ const runner = useRunner();
 
 settings.mode = 'code';
 const id = computed(() => String(route.params.id));
-const langId = computed<LangId>(() => (route.query.lang === 'python' ? 'python' : route.query.lang === 'javascript' ? 'javascript' : settings.lang));
+const langId = computed<LangId>(() => asLangId(route.query.lang) ?? settings.lang);
 const lang = computed(() => catalog.lang(langId.value));
 watch(langId, (l) => (settings.lang = l), { immediate: true });
 
@@ -141,6 +142,8 @@ const lastRun = computed(() => progress.lastRuns[runKey.value] ?? null);
 
 async function runTests() {
   if (!problem.value || !lang.value || runner.running) return;
+  // Bahasa tanpa runtime browser (mis. Go): Ctrl+Enter tidak melakukan apa-apa selain memberi tahu.
+  if (!lang.value.runnable) return toast(`${lang.value.label} belum bisa dijalankan di browser. Pakai "Salin program uji".`);
   const p = problem.value;
   const outcome = await runner.run(p, lang.value, code.value);
   if (p.id !== id.value) return;
@@ -198,16 +201,17 @@ const isNew = computed(() => {
         <span class="filename">solusi.{{ lang.ext }}</span>
         <span class="row" style="gap: 6px">
           <span v-if="langId === 'python' && runner.pyStatus === 'loading'" class="pill info">Memuat Python…</span>
-          <span class="pill info">dijalankan di browser</span>
+          <span class="pill info">{{ lang.runnable ? 'dijalankan di browser' : 'jalankan di komputermu' }}</span>
         </span>
       </div>
       <CodeEditor v-model="code" :indent="lang.indent" :label="`Editor kode ${lang.label}`" @run="runTests" />
       <p class="editor-hint kbd-hint">
-        <kbd>Tab</kbd> indentasi · <kbd>Shift</kbd>+<kbd>Tab</kbd> kurangi · <kbd>Esc</kbd> lalu <kbd>Tab</kbd> keluar editor ·
-        <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>Enter</kbd> jalankan
+        <kbd>Tab</kbd> indentasi · <kbd>Shift</kbd>+<kbd>Tab</kbd> kurangi · <kbd>Esc</kbd> lalu <kbd>Tab</kbd> keluar editor
+        <template v-if="lang.runnable"> · <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>Enter</kbd> jalankan</template>
       </p>
+      <LocalRunCopy v-if="!lang.runnable" :problem="problem" :lang="lang" :code="code" />
       <div class="actions">
-        <button class="btn primary" :disabled="runner.running" @click="runTests">
+        <button v-if="lang.runnable" class="btn primary" :disabled="runner.running" @click="runTests">
           <span v-if="runner.running" class="spinner" aria-hidden="true" />
           {{ runner.running ? (langId === 'python' && runner.pyStatus === 'loading' ? 'Memuat Python…' : 'Menjalankan…') : '▶ Jalankan tes' }}
         </button>
@@ -218,7 +222,7 @@ const isNew = computed(() => {
 
       <div id="hasil" tabindex="-1" aria-live="polite" style="outline: none">
         <TestResults v-if="lastRun" :outcome="lastRun" :fn-name="problem.function.name" />
-        <p v-else class="muted" style="font-size: 14px; margin-top: 14px">Tulis solusi lalu jalankan tes untuk melihat hasilnya di sini.</p>
+        <p v-else-if="lang.runnable" class="muted" style="font-size: 14px; margin-top: 14px">Tulis solusi lalu jalankan tes untuk melihat hasilnya di sini.</p>
       </div>
 
       <details v-if="problem.commonMistakes.length" id="kesalahan-umum" class="details" style="margin-top: 14px" :open="mistakesOpen" @toggle="mistakesOpen = ($event.target as HTMLDetailsElement).open">

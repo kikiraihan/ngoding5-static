@@ -36,7 +36,8 @@
   ],
   "solutions": {
     "javascript": "function duaJumlah(arr, target) {\n  const lihat = new Map();\n  for (let j = 0; j < arr.length; j++) {\n    const butuh = target - arr[j];\n    if (lihat.has(butuh)) return [lihat.get(butuh), j];\n    if (!lihat.has(arr[j])) lihat.set(arr[j], j);\n  }\n  return [];\n}",
-    "python": "def dua_jumlah(arr, target):\n    for j in range(len(arr)):\n        for i in range(j):\n            if arr[i] + arr[j] == target:\n                return [i, j]\n    return []"
+    "python": "def dua_jumlah(arr, target):\n    for j in range(len(arr)):\n        for i in range(j):\n            if arr[i] + arr[j] == target:\n                return [i, j]\n    return []",
+    "go": "func duaJumlah(arr []int, target int) []int {\n\tlihat := map[int]int{}\n\tfor j, x := range arr {\n\t\tif i, ada := lihat[target-x]; ada {\n\t\t\treturn []int{i, j}\n\t\t}\n\t\tif _, ada := lihat[x]; !ada {\n\t\t\tlihat[x] = j\n\t\t}\n\t}\n\treturn []int{}\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -44,6 +45,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

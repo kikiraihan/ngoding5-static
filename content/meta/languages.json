@@ -42,5 +42,27 @@
       "int[][]": "list[list[int]]",
       "dict<str,int>": "dict[str, int]"
     }
+  },
+  {
+    "id": "go",
+    "label": "Go",
+    "short": "Go",
+    "ext": "go",
+    "prefix": "go",
+    "runnable": false,
+    "timeoutMs": 3000,
+    "indent": "\t",
+    "comment": "//",
+    "naming": "camelCase",
+    "types": {
+      "int": "int",
+      "float": "float64",
+      "bool": "bool",
+      "str": "string",
+      "int[]": "[]int",
+      "str[]": "[]string",
+      "int[][]": "[][]int",
+      "dict<str,int>": "map[string]int"
+    }
   }
 ]

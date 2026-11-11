@@ -1,0 +1,18 @@
+{
+  "id": "go-0007",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "perulangan-kondisi",
+  "level": "Mudah",
+  "title": "for sebagai while",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\ti := 1\n\tfor i < 20 {\n\t\ti *= 3\n\t}\n\tfmt.Println(i)\n}",
+  "answer": "27",
+  "explain": "Go tidak punya while; `for kondisi { }` berfungsi sama. i menjadi 3, 9, 27. Saat i = 27 kondisi i < 20 salah sehingga perulangan berhenti dan 27 dicetak.",
+  "concepts": ["for", "while"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

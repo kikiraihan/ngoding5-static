@@ -27,7 +27,8 @@
   ],
   "solutions": {
     "javascript": "function segitigaBintang(n) {\n  const baris = [];\n  for (let i = 1; i <= n; i++) baris.push(\" \".repeat(n - i) + \"*\".repeat(i));\n  return baris;\n}",
-    "python": "def segitiga_bintang(n):\n    return [\" \" * (n - i) + \"*\" * i for i in range(1, n + 1)]"
+    "python": "def segitiga_bintang(n):\n    return [\" \" * (n - i) + \"*\" * i for i in range(1, n + 1)]",
+    "go": "import \"strings\"\n\nfunc segitigaBintang(n int) []string {\n\tbaris := []string{}\n\tfor i := 1; i <= n; i++ {\n\t\tbaris = append(baris, strings.Repeat(\" \", n-i)+strings.Repeat(\"*\", i))\n\t}\n\treturn baris\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -35,6 +36,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

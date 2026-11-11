@@ -35,7 +35,8 @@
   ],
   "solutions": {
     "javascript": "function jumlahDigit(n) {\n  n = Math.abs(n);\n  let total = 0;\n  while (n > 0) {\n    total += n % 10;\n    n = Math.floor(n / 10);\n  }\n  return total;\n}",
-    "python": "def jumlah_digit(n):\n    return sum(int(d) for d in str(abs(n)))"
+    "python": "def jumlah_digit(n):\n    return sum(int(d) for d in str(abs(n)))",
+    "go": "func jumlahDigit(n int) int {\n\tif n < 0 {\n\t\tn = -n\n\t}\n\ttotal := 0\n\tfor n > 0 {\n\t\ttotal += n % 10\n\t\tn /= 10\n\t}\n\treturn total\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -43,6 +44,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

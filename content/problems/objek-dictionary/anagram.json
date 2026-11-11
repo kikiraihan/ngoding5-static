@@ -38,7 +38,8 @@
   ],
   "solutions": {
     "javascript": "function isAnagram(a, b) {\n  const bersih = s => s.toLowerCase().replace(/ /g, \"\");\n  a = bersih(a); b = bersih(b);\n  if (a.length !== b.length) return false;\n  const hitung = {};\n  for (const ch of a) hitung[ch] = (hitung[ch] || 0) + 1;\n  for (const ch of b) {\n    if (!hitung[ch]) return false;\n    hitung[ch]--;\n  }\n  return true;\n}",
-    "python": "def is_anagram(a, b):\n    def bersih(s):\n        return sorted(s.lower().replace(\" \", \"\"))\n    return bersih(a) == bersih(b)"
+    "python": "def is_anagram(a, b):\n    def bersih(s):\n        return sorted(s.lower().replace(\" \", \"\"))\n    return bersih(a) == bersih(b)",
+    "go": "import \"strings\"\n\nfunc isAnagram(a string, b string) bool {\n\tbersih := func(s string) string {\n\t\treturn strings.ReplaceAll(strings.ToLower(s), \" \", \"\")\n\t}\n\thitung := map[rune]int{}\n\tfor _, ch := range bersih(a) {\n\t\thitung[ch]++\n\t}\n\tfor _, ch := range bersih(b) {\n\t\thitung[ch]--\n\t}\n\tfor _, n := range hitung {\n\t\tif n != 0 {\n\t\t\treturn false\n\t\t}\n\t}\n\treturn true\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -46,6 +47,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

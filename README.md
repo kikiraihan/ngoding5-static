@@ -3,7 +3,9 @@
 Website latihan logika & syntax pemrograman berbahasa Indonesia. **Statis**, dibangun dengan **Vue 3 + Vite**, deploy gratis di **Vercel**.
 
 - **Tulis kode**: lengkapi fungsi, jalankan kasus uji langsung di browser (JavaScript lewat Web Worker, Python lewat Skulpt).
-- **Tebak output**: baca program, tebak output persisnya.
+- **Tebak output**: baca program JavaScript, Python, atau Go, lalu tebak output persisnya.
+- **Go**: semua soal tulis kode punya template & solusi Go. Go belum bisa dijalankan di browser, jadi tombol
+  **Salin program uji** menghasilkan `main.go` berisi kode kamu + semua kasus uji untuk `go run` atau go.dev/play.
 - Bantuan statis: petunjuk bertingkat, contoh solusi, pembahasan, kesalahan umum, dan tombol **Salin untuk tanya AI**.
 - Tanpa login, tanpa server. Progres di `localStorage` (bisa diekspor/impor).
 
@@ -16,7 +18,8 @@ npm run build      # build data + vite build → dist/
 npm run preview
 ```
 
-Butuh Node ≥ 20 dan Python ≥ 3.10 (untuk verifikasi konten).
+Butuh Node ≥ 20 dan Python ≥ 3.10 (untuk verifikasi konten). Go ≥ 1.22 opsional: bila terpasang, `verify` juga
+menjalankan solusi & quiz Go; bila tidak, bagian Go dilewati.
 
 ## Struktur
 
@@ -38,6 +41,7 @@ public/data/      HASIL BUILD dari content/ (tidak di-commit)
 scripts/ngoding help
 scripts/ngoding new problem --tema array --level Sedang --id dua-jumlah
 scripts/ngoding new quiz --lang py --tema string-koleksi --level Mudah
+scripts/ngoding new quiz --lang go --tema fungsi-rekursi --level Sedang
 scripts/ngoding validate          # schema, slug unik, tema/level, duplikat, MD ada
 scripts/ngoding verify            # jalankan solusi JS & Python + kode quiz, tulis field verification
 scripts/ngoding fix-expected <id> --from js   # hati-hati, review diff
@@ -48,7 +52,8 @@ scripts/ngoding check             # validate + verify + build (wajib hijau sebel
 ```
 
 `verify` menjalankan kode di proses terpisah dengan batas waktu 3 detik, tanpa jaringan (`node --no-experimental-fetch`, `python3 -I`),
-dan membandingkan hasil solusi JS vs Python (verifikasi silang).
+dan membandingkan hasil solusi JS vs Python, serta JS vs Go (verifikasi silang). Solusi Go dikompilasi dengan `go build`
+lalu dijalankan bersama harness yang membaca kasus uji (`scripts/lib/run_go.mjs`).
 
 ## Menambah soal (alur pengelola)
 

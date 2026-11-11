@@ -1,0 +1,18 @@
+{
+  "id": "go-0016",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "string-koleksi",
+  "level": "Sedang",
+  "title": "Mencetak dan menghapus isi map",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tskor := map[string]int{\"budi\": 70, \"ani\": 90, \"cici\": 80}\n\tfmt.Println(skor)\n\tdelete(skor, \"ani\")\n\tdelete(skor, \"dodi\")\n\tfmt.Println(len(skor))\n}",
+  "answer": "map[ani:90 budi:70 cici:80]\n2",
+  "explain": "Urutan iterasi map acak, tetapi `fmt.Println` selalu mencetak map dengan kunci terurut, jadi outputnya pasti. `delete` pada kunci yang tidak ada (\"dodi\") tidak error dan tidak berbuat apa-apa.",
+  "concepts": ["map", "delete", "fmt"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

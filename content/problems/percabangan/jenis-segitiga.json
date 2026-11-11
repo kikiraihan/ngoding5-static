@@ -43,7 +43,8 @@
   ],
   "solutions": {
     "javascript": "function jenisSegitiga(a, b, c) {\n  if (a <= 0 || b <= 0 || c <= 0) return \"bukan segitiga\";\n  if (a + b <= c || a + c <= b || b + c <= a) return \"bukan segitiga\";\n  if (a === b && b === c) return \"sama sisi\";\n  if (a === b || b === c || a === c) return \"sama kaki\";\n  return \"sembarang\";\n}",
-    "python": "def jenis_segitiga(a, b, c):\n    x, y, z = sorted([a, b, c])\n    if x <= 0 or x + y <= z:\n        return \"bukan segitiga\"\n    if x == z:\n        return \"sama sisi\"\n    if x == y or y == z:\n        return \"sama kaki\"\n    return \"sembarang\""
+    "python": "def jenis_segitiga(a, b, c):\n    x, y, z = sorted([a, b, c])\n    if x <= 0 or x + y <= z:\n        return \"bukan segitiga\"\n    if x == z:\n        return \"sama sisi\"\n    if x == y or y == z:\n        return \"sama kaki\"\n    return \"sembarang\"",
+    "go": "func jenisSegitiga(a int, b int, c int) string {\n\tswitch {\n\tcase a <= 0 || b <= 0 || c <= 0:\n\t\treturn \"bukan segitiga\"\n\tcase a+b <= c || a+c <= b || b+c <= a:\n\t\treturn \"bukan segitiga\"\n\tcase a == b && b == c:\n\t\treturn \"sama sisi\"\n\tcase a == b || b == c || a == c:\n\t\treturn \"sama kaki\"\n\tdefault:\n\t\treturn \"sembarang\"\n\t}\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -51,6 +52,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

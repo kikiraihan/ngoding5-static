@@ -32,7 +32,8 @@
   ],
   "solutions": {
     "javascript": "function tarifParkir(menit) {\n  if (menit <= 15) return 0;\n  const jam = Math.ceil(menit / 60);\n  const biaya = 5000 + (jam - 1) * 3000;\n  return Math.min(biaya, 25000);\n}",
-    "python": "def tarif_parkir(menit):\n    if menit <= 15:\n        return 0\n    jam = -(-menit // 60)\n    return min(5000 + (jam - 1) * 3000, 25000)"
+    "python": "def tarif_parkir(menit):\n    if menit <= 15:\n        return 0\n    jam = -(-menit // 60)\n    return min(5000 + (jam - 1) * 3000, 25000)",
+    "go": "func tarifParkir(menit int) int {\n\tif menit <= 15 {\n\t\treturn 0\n\t}\n\tjam := (menit + 59) / 60 // pembulatan ke atas\n\tbiaya := 5000 + (jam-1)*3000\n\treturn min(biaya, 25000)\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -40,6 +41,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

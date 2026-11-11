@@ -1,0 +1,18 @@
+{
+  "id": "go-0003",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "operator-tipe-data",
+  "level": "Sedang",
+  "title": "Panjang string UTF-8",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\ts := \"héllo\"\n\tfmt.Println(len(s))\n\tfmt.Println(len([]rune(s)))\n\tfmt.Println(s[1])\n}",
+  "answer": "6\n5\n195",
+  "explain": "`len` pada string menghitung byte, bukan huruf. Huruf é butuh 2 byte di UTF-8, jadi panjangnya 6. Diubah ke []rune barulah terhitung 5 karakter. `s[1]` mengambil satu byte (byte pertama é = 195), bukan huruf é.",
+  "concepts": ["byte", "rune", "UTF-8"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

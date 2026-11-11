@@ -28,7 +28,8 @@
   ],
   "solutions": {
     "javascript": "function jumlahSampai(n) {\n  let total = 0;\n  for (let i = 1; i <= n; i++) total += i;\n  return total;\n}",
-    "python": "def jumlah_sampai(n):\n    if n < 1:\n        return 0\n    return n * (n + 1) // 2"
+    "python": "def jumlah_sampai(n):\n    if n < 1:\n        return 0\n    return n * (n + 1) // 2",
+    "go": "func jumlahSampai(n int) int {\n\tif n < 1 {\n\t\treturn 0\n\t}\n\treturn n * (n + 1) / 2\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -36,6 +37,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

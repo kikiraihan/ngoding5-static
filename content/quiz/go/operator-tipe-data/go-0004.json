@@ -1,0 +1,18 @@
+{
+  "id": "go-0004",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "operator-tipe-data",
+  "level": "Sedang",
+  "title": "Rune adalah angka",
+  "code": "package main\n\nimport (\n\t\"fmt\"\n\t\"strconv\"\n)\n\nfunc main() {\n\tr := 'A' + 2\n\tfmt.Println(r)\n\tfmt.Println(string(r))\n\tfmt.Println(strconv.Itoa(65))\n}",
+  "answer": "67\nC\n65",
+  "explain": "Literal 'A' bertipe rune (alias int32) bernilai 65, jadi 'A' + 2 = 67 dan Println mencetak angkanya. `string(r)` mengubah kode 67 menjadi huruf \"C\". Untuk mengubah angka menjadi teks angka, pakai `strconv.Itoa`, bukan `string(65)` (itu menghasilkan \"A\").",
+  "concepts": ["rune", "konversi tipe"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

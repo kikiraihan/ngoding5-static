@@ -18,7 +18,7 @@ Contoh: `/ngoding5-add-language bahasa=php tema=string`
 3. Cari soal yang belum punya `solutions.<bahasa>` (filter tema/level).
 4. Tulis solusi idiomatis dengan nama fungsi sesuai konvensi bahasa (`naming`).
 5. Verifikasi:
-   - Bila `scripts/lib/runners.mjs` sudah punya runner untuk bahasa itu, jalankan `scripts/ngoding verify --lang <bahasa> <file...>`.
-   - Bila belum, beri tahu pengelola bahwa solusi **belum terverifikasi** dan sarankan menambah runner (pola: `scripts/verify_py.py`).
+   - Bila `scripts/lib/runners.mjs` sudah punya runner untuk bahasa itu (saat ini: javascript, python, go), jalankan `scripts/ngoding verify --lang <bahasa> <file...>`.
+   - Bila belum, beri tahu pengelola bahwa solusi **belum terverifikasi** dan sarankan menambah runner (pola: `scripts/verify_py.py`, atau `scripts/lib/run_go.mjs` untuk bahasa yang dikompilasi).
      Jangan menulis field `verification` manual.
 6. `scripts/ngoding check`, `CHANGELOG-content.md`, ringkasan.

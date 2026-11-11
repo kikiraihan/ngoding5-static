@@ -1,0 +1,18 @@
+{
+  "id": "go-0019",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "fungsi-rekursi",
+  "level": "Mudah",
+  "title": "Fungsi dengan dua nilai kembali",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc bagi(a, b int) (int, int) {\n\treturn a / b, a % b\n}\n\nfunc main() {\n\thasil, sisa := bagi(17, 5)\n\tfmt.Println(hasil, sisa)\n}",
+  "answer": "3 2",
+  "explain": "Fungsi Go bisa mengembalikan lebih dari satu nilai. 17 / 5 = 3 (pembagian bulat) dan 17 % 5 = 2.",
+  "concepts": ["multiple return"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

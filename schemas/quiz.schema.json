@@ -6,10 +6,10 @@
   "additionalProperties": false,
   "required": ["id", "schemaVersion", "revision", "lang", "tema", "level", "code", "answer", "explain", "createdAt", "updatedAt"],
   "properties": {
-    "id": { "type": "string", "pattern": "^(js|py)-\\d{4}$" },
+    "id": { "type": "string", "pattern": "^(js|py|go)-\\d{4}$" },
     "schemaVersion": { "const": 1 },
     "revision": { "type": "integer", "minimum": 1 },
-    "lang": { "enum": ["javascript", "python"] },
+    "lang": { "enum": ["javascript", "python", "go"] },
     "tema": { "type": "string" },
     "level": { "enum": ["Mudah", "Sedang", "Sulit"] },
     "title": { "type": "string", "maxLength": 80 },

@@ -1,0 +1,18 @@
+{
+  "id": "go-0009",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "perulangan-kondisi",
+  "level": "Sedang",
+  "title": "switch dan fallthrough",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tx := 2\n\tswitch x {\n\tcase 1:\n\t\tfmt.Println(\"satu\")\n\tcase 2:\n\t\tfmt.Println(\"dua\")\n\t\tfallthrough\n\tcase 3:\n\t\tfmt.Println(\"tiga\")\n\tcase 4:\n\t\tfmt.Println(\"empat\")\n\t}\n}",
+  "answer": "dua\ntiga",
+  "explain": "Berbeda dengan C/JavaScript, case di Go otomatis berhenti tanpa break. `fallthrough` memaksa lanjut ke badan case berikutnya **tanpa mengecek kondisinya**, jadi \"tiga\" ikut tercetak walau x bukan 3. Case 4 tidak dijalankan.",
+  "concepts": ["switch", "fallthrough"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

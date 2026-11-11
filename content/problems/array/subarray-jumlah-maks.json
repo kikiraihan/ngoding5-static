@@ -35,7 +35,8 @@
   ],
   "solutions": {
     "javascript": "function jumlahMaks(arr) {\n  let saatIni = arr[0], terbaik = arr[0];\n  for (let i = 1; i < arr.length; i++) {\n    saatIni = Math.max(arr[i], saatIni + arr[i]);\n    terbaik = Math.max(terbaik, saatIni);\n  }\n  return terbaik;\n}",
-    "python": "def jumlah_maks(arr):\n    terbaik = arr[0]\n    for i in range(len(arr)):\n        total = 0\n        for j in range(i, len(arr)):\n            total += arr[j]\n            terbaik = max(terbaik, total)\n    return terbaik"
+    "python": "def jumlah_maks(arr):\n    terbaik = arr[0]\n    for i in range(len(arr)):\n        total = 0\n        for j in range(i, len(arr)):\n            total += arr[j]\n            terbaik = max(terbaik, total)\n    return terbaik",
+    "go": "func jumlahMaks(arr []int) int {\n\tterbaik, sekarang := arr[0], arr[0]\n\tfor _, x := range arr[1:] {\n\t\tsekarang = max(x, sekarang+x)\n\t\tterbaik = max(terbaik, sekarang)\n\t}\n\treturn terbaik\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -43,6 +44,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

@@ -1,0 +1,18 @@
+{
+  "id": "go-0014",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "string-koleksi",
+  "level": "Mudah",
+  "title": "strings.Fields dan Join",
+  "code": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n)\n\nfunc main() {\n\tkata := strings.Fields(\"  belajar   go  itu   seru \")\n\tfmt.Println(len(kata))\n\tfmt.Println(strings.Join(kata, \"-\"))\n}",
+  "answer": "4\nbelajar-go-itu-seru",
+  "explain": "`strings.Fields` memecah string di sekitar satu atau lebih spasi dan membuang spasi di ujung, jadi tidak ada elemen kosong. Hasilnya 4 kata, lalu `Join` menyambungnya dengan \"-\".",
+  "concepts": ["strings", "slice"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

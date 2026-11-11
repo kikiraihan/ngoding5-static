@@ -27,7 +27,8 @@
   ],
   "solutions": {
     "javascript": "function faktorial(n) {\n  let hasil = 1;\n  for (let i = 2; i <= n; i++) hasil *= i;\n  return hasil;\n}",
-    "python": "def faktorial(n):\n    hasil = 1\n    for i in range(2, n + 1):\n        hasil *= i\n    return hasil"
+    "python": "def faktorial(n):\n    hasil = 1\n    for i in range(2, n + 1):\n        hasil *= i\n    return hasil",
+    "go": "func faktorial(n int) int {\n\thasil := 1\n\tfor i := 2; i <= n; i++ {\n\t\thasil *= i\n\t}\n\treturn hasil\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -35,6 +36,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

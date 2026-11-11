@@ -27,7 +27,8 @@
   ],
   "solutions": {
     "javascript": "function kapitalKata(s) {\n  return s.split(\" \").map(w => w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : w).join(\" \");\n}",
-    "python": "def kapital_kata(s):\n    return \" \".join(w[:1].upper() + w[1:].lower() for w in s.split(\" \"))"
+    "python": "def kapital_kata(s):\n    return \" \".join(w[:1].upper() + w[1:].lower() for w in s.split(\" \"))",
+    "go": "import \"strings\"\n\nfunc kapitalKata(s string) string {\n\tkata := strings.Split(s, \" \")\n\tfor i, k := range kata {\n\t\tif k != \"\" {\n\t\t\thuruf := []rune(strings.ToLower(k))\n\t\t\tkata[i] = strings.ToUpper(string(huruf[0])) + string(huruf[1:])\n\t\t}\n\t}\n\treturn strings.Join(kata, \" \")\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -35,6 +36,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

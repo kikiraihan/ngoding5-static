@@ -30,7 +30,8 @@
   ],
   "solutions": {
     "javascript": "function balikString(s) {\n  let hasil = \"\";\n  for (let i = s.length - 1; i >= 0; i--) hasil += s[i];\n  return hasil;\n}",
-    "python": "def balik_string(s):\n    return s[::-1]"
+    "python": "def balik_string(s):\n    return s[::-1]",
+    "go": "func balikString(s string) string {\n\thuruf := []rune(s)\n\tfor i, j := 0, len(huruf)-1; i < j; i, j = i+1, j-1 {\n\t\thuruf[i], huruf[j] = huruf[j], huruf[i]\n\t}\n\treturn string(huruf)\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -38,6 +39,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

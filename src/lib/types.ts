@@ -1,4 +1,7 @@
-export type LangId = 'javascript' | 'python';
+export type LangId = 'javascript' | 'python' | 'go';
+export const LANG_IDS: readonly LangId[] = ['javascript', 'python', 'go'];
+/** Ubah nilai bebas (query/param URL) menjadi LangId yang dikenal, atau null. */
+export const asLangId = (v: unknown): LangId | null => (LANG_IDS as readonly unknown[]).includes(v) ? (v as LangId) : null;
 export type Level = 'Mudah' | 'Sedang' | 'Sulit';
 export type Mode = 'code' | 'quiz';
 export type CompareMode = 'exact' | 'float' | 'unordered';

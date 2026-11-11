@@ -60,7 +60,7 @@ function resetProgress() {
     </p>
     <p class="muted tnum" v-if="catalog.loaded">
       Saat ini ada {{ catalog.problems.length }} soal tulis kode dan
-      {{ Object.values(catalog.quizzes).reduce((s, l) => s + l.length, 0) }} soal tebak output (JavaScript & Python).
+      {{ Object.values(catalog.quizzes).reduce((s, l) => s + l.length, 0) }} soal tebak output (JavaScript, Python & Go).
     </p>
 
     <section class="stack" style="gap: 8px">
@@ -105,11 +105,14 @@ function resetProgress() {
     <section class="stack" style="gap: 8px">
       <h2 style="font-size: 1.15rem">Soal & kontribusi</h2>
       <p class="desc">
-        Setiap soal diverifikasi otomatis: solusi rujukan JavaScript dan Python harus lulus semua kasus uji, dan output tebakan diambil dari eksekusi asli.
+        Setiap soal diverifikasi otomatis: solusi rujukan JavaScript, Python, dan Go harus lulus semua kasus uji, dan output tebakan diambil dari eksekusi asli.
         Menemukan soal yang salah? Klik "Soal ini salah?" di halaman soal, atau buka
         <a :href="`${REPO_URL}/issues`" target="_blank" rel="noopener">GitHub Issues</a>.
       </p>
       <p class="muted" style="font-size: 13px">Runtime Python di browser memakai Skulpt; beberapa fitur Python tingkat lanjut mungkin belum didukung.</p>
+      <p class="muted" style="font-size: 13px">
+        Go belum bisa dijalankan di browser. Di mode Tulis kode, pakai <b>Salin program uji</b> lalu jalankan <code>go run main.go</code> atau tempel di go.dev/play.
+      </p>
     </section>
   </article>
 </template>

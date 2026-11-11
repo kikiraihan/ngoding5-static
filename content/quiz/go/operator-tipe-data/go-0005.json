@@ -1,0 +1,18 @@
+{
+  "id": "go-0005",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "operator-tipe-data",
+  "level": "Sulit",
+  "title": "Overflow int8 dan uint8",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tvar x int8 = 127\n\tx++\n\tfmt.Println(x)\n\tvar u uint8 = 0\n\tu--\n\tfmt.Println(u)\n}",
+  "answer": "-128\n255",
+  "explain": "Operasi pada variabel bilangan bulat tidak memicu error saat melewati batas, nilainya berputar (wrap around). int8 maksimal 127, ditambah 1 menjadi -128. uint8 minimal 0, dikurangi 1 menjadi 255. Hanya konstanta yang dicek saat kompilasi.",
+  "concepts": ["overflow", "int8", "uint8"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

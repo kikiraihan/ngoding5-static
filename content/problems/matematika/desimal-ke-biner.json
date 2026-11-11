@@ -28,7 +28,8 @@
   ],
   "solutions": {
     "javascript": "function keBiner(n) {\n  if (n === 0) return \"0\";\n  let s = \"\";\n  while (n > 0) {\n    s = (n % 2) + s;\n    n = Math.floor(n / 2);\n  }\n  return s;\n}",
-    "python": "def ke_biner(n):\n    if n == 0:\n        return \"0\"\n    bit = []\n    while n > 0:\n        bit.append(str(n % 2))\n        n //= 2\n    return \"\".join(reversed(bit))"
+    "python": "def ke_biner(n):\n    if n == 0:\n        return \"0\"\n    bit = []\n    while n > 0:\n        bit.append(str(n % 2))\n        n //= 2\n    return \"\".join(reversed(bit))",
+    "go": "func keBiner(n int) string {\n\tif n == 0 {\n\t\treturn \"0\"\n\t}\n\tvar digit []byte\n\tfor n > 0 {\n\t\tdigit = append(digit, byte('0'+n%2))\n\t\tn /= 2\n\t}\n\t// digit terkumpul dari belakang, balik urutannya\n\tfor i, j := 0, len(digit)-1; i < j; i, j = i+1, j-1 {\n\t\tdigit[i], digit[j] = digit[j], digit[i]\n\t}\n\treturn string(digit)\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -36,6 +37,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

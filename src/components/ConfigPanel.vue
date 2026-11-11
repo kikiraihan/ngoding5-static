@@ -17,7 +17,11 @@ const tema = computed({
   get: () => (mode.value === 'code' ? settings.temaCode : settings.temaQuiz),
   set: (v: string) => (mode.value === 'code' ? (settings.temaCode = v) : (settings.temaQuiz = v)),
 });
-const langs = computed(() => catalog.languages.filter((l) => l.runnable));
+// Tebak output tidak butuh runtime: tampilkan bahasa yang punya soal tebak output.
+// Tulis kode: semua bahasa; yang belum bisa dijalankan di browser diberi keterangan.
+const langs = computed(() =>
+  mode.value === 'quiz' ? catalog.languages.filter((l) => catalog.quizList(l.id).length) : catalog.languages,
+);
 
 function setLang(v: LangId) {
   settings.lang = v;
@@ -62,7 +66,7 @@ const chips = computed(() => [
         <label class="field">
           <span>Bahasa</span>
           <select class="select" :value="settings.lang" @change="setLang(($event.target as HTMLSelectElement).value as LangId)">
-            <option v-for="l in langs" :key="l.id" :value="l.id">{{ l.label }}</option>
+            <option v-for="l in langs" :key="l.id" :value="l.id">{{ l.label }}{{ mode === 'code' && !l.runnable ? ' (jalankan lokal)' : '' }}</option>
           </select>
         </label>
         <label class="field">

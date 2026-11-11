@@ -77,7 +77,8 @@ export function validateAll({ only = null, checkLock = true, requireVerified = f
     if (data.hints.length < 2) warn(file, 'petunjuk sebaiknya 2–3');
     if ((data.commonMistakes || []).length < 2) warn(file, 'kesalahan umum sebaiknya ≥ 2');
     for (const m of data.commonMistakes || []) if (m.failsTest != null && m.failsTest >= data.tests.length) err(file, `commonMistakes.failsTest ${m.failsTest} di luar jumlah tests`);
-    for (const lang of ['javascript', 'python']) {
+    // JS & Python wajib; bahasa lain (mis. Go) diverifikasi bila solusinya ada.
+    for (const lang of new Set(['javascript', 'python', ...Object.keys(data.solutions)])) {
       if (data.verification?.[lang]?.passed !== true) (requireVerified ? err : warn)(file, `belum terverifikasi ${lang} (jalankan \`ngoding verify\`)`);
     }
   }

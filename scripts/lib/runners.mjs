@@ -3,6 +3,7 @@ import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { ROOT } from './content.mjs';
 import { toSnake } from './compare.mjs';
+import { runGo, goAvailable, goVersion } from './run_go.mjs';
 
 const TIMEOUT_MS = 3000;
 const PYTHON = process.env.NGODING_PYTHON || 'python3';
@@ -35,6 +36,8 @@ export function runPy(job) {
 export const RUNNERS = {
   javascript: { run: runJs, fnName: (n) => n, runtime: () => `node ${process.versions.node.split('.')[0]}` },
   python: { run: runPy, fnName: toSnake, runtime: () => pyVersion() },
+  // Go opsional: bila `go` tidak terpasang, verifikasi Go dilewati (bukan gagal).
+  go: { run: (job) => runGo(job, TIMEOUT_MS), fnName: (n) => n, runtime: () => goVersion(), available: goAvailable, optional: true },
 };
 
 let _pyv;

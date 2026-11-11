@@ -59,7 +59,8 @@
   ],
   "solutions": {
     "javascript": "function permutasi(s) {\n  if (s.length === 0) return [\"\"];\n  const hasil = new Set();\n  for (let i = 0; i < s.length; i++) {\n    const sisa = s.slice(0, i) + s.slice(i + 1);\n    for (const p of permutasi(sisa)) hasil.add(s[i] + p);\n  }\n  return [...hasil].sort();\n}",
-    "python": "def permutasi(s):\n    chars = sorted(s)\n    hasil = []\n    dipakai = [False] * len(chars)\n\n    def cari(jalur):\n        if len(jalur) == len(chars):\n            hasil.append(\"\".join(jalur))\n            return\n        for i, ch in enumerate(chars):\n            if dipakai[i]:\n                continue\n            if i > 0 and chars[i] == chars[i - 1] and not dipakai[i - 1]:\n                continue\n            dipakai[i] = True\n            jalur.append(ch)\n            cari(jalur)\n            jalur.pop()\n            dipakai[i] = False\n\n    cari([])\n    return hasil"
+    "python": "def permutasi(s):\n    chars = sorted(s)\n    hasil = []\n    dipakai = [False] * len(chars)\n\n    def cari(jalur):\n        if len(jalur) == len(chars):\n            hasil.append(\"\".join(jalur))\n            return\n        for i, ch in enumerate(chars):\n            if dipakai[i]:\n                continue\n            if i > 0 and chars[i] == chars[i - 1] and not dipakai[i - 1]:\n                continue\n            dipakai[i] = True\n            jalur.append(ch)\n            cari(jalur)\n            jalur.pop()\n            dipakai[i] = False\n\n    cari([])\n    return hasil",
+    "go": "import \"sort\"\n\nfunc permutasi(s string) []string {\n\thuruf := []rune(s)\n\tsort.Slice(huruf, func(i, j int) bool { return huruf[i] < huruf[j] })\n\thasil := []string{}\n\tdipakai := make([]bool, len(huruf))\n\tsekarang := make([]rune, 0, len(huruf))\n\tvar susun func()\n\tsusun = func() {\n\t\tif len(sekarang) == len(huruf) {\n\t\t\thasil = append(hasil, string(sekarang))\n\t\t\treturn\n\t\t}\n\t\tfor i, ch := range huruf {\n\t\t\t// lewati huruf kembar agar permutasi tidak dobel\n\t\t\tif dipakai[i] || (i > 0 && huruf[i] == huruf[i-1] && !dipakai[i-1]) {\n\t\t\t\tcontinue\n\t\t\t}\n\t\t\tdipakai[i] = true\n\t\t\tsekarang = append(sekarang, ch)\n\t\t\tsusun()\n\t\t\tsekarang = sekarang[:len(sekarang)-1]\n\t\t\tdipakai[i] = false\n\t\t}\n\t}\n\tsusun()\n\treturn hasil\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -67,6 +68,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

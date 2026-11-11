@@ -1,0 +1,18 @@
+{
+  "id": "go-0017",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "string-koleksi",
+  "level": "Sulit",
+  "title": "Slice berbagi array",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\ta := []int{1, 2, 3, 4, 5}\n\tb := a[1:3]\n\tb[0] = 20\n\tfmt.Println(a)\n\tfmt.Println(len(b), cap(b))\n}",
+  "answer": "[1 20 3 4 5]\n2 4",
+  "explain": "Memotong slice tidak menyalin data; b menunjuk array yang sama dengan a mulai indeks 1. Mengubah b[0] berarti mengubah a[1]. Panjang b = 3 - 1 = 2, kapasitasnya dihitung sampai ujung array asli: 5 - 1 = 4.",
+  "concepts": ["slice", "kapasitas"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

@@ -30,7 +30,8 @@
   ],
   "solutions": {
     "javascript": "function nilaiMaks(arr) {\n  let maks = arr[0];\n  for (const x of arr) if (x > maks) maks = x;\n  return maks;\n}",
-    "python": "def nilai_maks(arr):\n    maks = arr[0]\n    for x in arr:\n        if x > maks:\n            maks = x\n    return maks"
+    "python": "def nilai_maks(arr):\n    maks = arr[0]\n    for x in arr:\n        if x > maks:\n            maks = x\n    return maks",
+    "go": "func nilaiMaks(arr []int) int {\n\tmaks := arr[0]\n\tfor _, x := range arr[1:] {\n\t\tif x > maks {\n\t\t\tmaks = x\n\t\t}\n\t}\n\treturn maks\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -38,6 +39,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

@@ -24,7 +24,8 @@
   ],
   "solutions": {
     "javascript": "function totalStok(stok) {\n  let total = 0;\n  for (const v of Object.values(stok)) total += v;\n  return total;\n}",
-    "python": "def total_stok(stok):\n    return sum(stok.values())"
+    "python": "def total_stok(stok):\n    return sum(stok.values())",
+    "go": "func totalStok(stok map[string]int) int {\n\ttotal := 0\n\tfor _, jumlah := range stok {\n\t\ttotal += jumlah\n\t}\n\treturn total\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -32,6 +33,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

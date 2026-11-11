@@ -25,6 +25,9 @@ Dibaca oleh semua skill `ngoding5-*`. Sumber kebenaran konten ada di `content/`;
 - `tests`: 4–8 kasus, minimal 1 kasus tepi (kosong, nol, negatif, satu elemen). Level Sedang/Sulit: ≥ 1 `"hidden": true`. Minimal satu kasus terlihat.
 - `compare`: `exact` (bawaan), `float` (toleransi 1e-6), `unordered` (urutan array tidak penting).
 - `solutions.javascript` dan `solutions.python` wajib, ditulis **independen** (boleh beda algoritma) — verify membandingkan keduanya.
+- `solutions.go` sangat disarankan (semua soal seed sudah punya). Tulis fungsi saja, tanpa `package main`; `import` (bila perlu) di atas fungsi.
+  Nama fungsi sama dengan `function.name` (camelCase). Kembalikan slice/map kosong (`[]int{}`), bukan `nil`. Rapikan dengan `gofmt`.
+  `verify` menjalankannya bila perintah `go` ada, dan membandingkan hasilnya dengan JS.
 - Fungsi harus murni: tanpa input(), tanpa akses jaringan/file, selesai < 3 detik. Jangan kembalikan `set`, `Map`, atau tuple yang dimaksud sebagai objek.
 - `expected` ditulis tangan berdasarkan deskripsi. Bila ragu, pakai `scripts/ngoding fix-expected <id> --from py` lalu **periksa diff**.
 - `hints`: 2–3, bertingkat. Petunjuk 1 arah umum, 2 lebih spesifik, 3 boleh hampir memberi solusi. Jangan menulis kode lengkap.
@@ -35,10 +38,12 @@ Dibaca oleh semua skill `ngoding5-*`. Sumber kebenaran konten ada di `content/`;
 
 ## Aturan soal Tebak Output (`content/quiz/<lang>/<tema>/<id>.json`)
 
-- Buat kerangka dengan `scripts/ngoding new quiz --lang js|py --tema <slug> --level <Lv> [--count N]` (ID berikutnya otomatis).
+- Buat kerangka dengan `scripts/ngoding new quiz --lang js|py|go --tema <slug> --level <Lv> [--count N]` (ID berikutnya otomatis).
 - `answer` diisi dari **eksekusi asli**: tulis kode, isi `answer` sementara, jalankan `scripts/ngoding verify <id>`, salin "output asli" bila penjelasanmu memang sesuai.
 - JavaScript: cetak hanya string/angka/boolean, atau pakai `join`/`JSON.stringify` — format `console.log` objek berbeda antar runtime.
 - Python: deterministik (hindari `set` berisi string, `id()`, waktu, acak).
+- Go: program utuh yang lolos `gofmt` dan kompilasi (tanpa import/variabel tak terpakai). Jangan mencetak hasil `range` atas map
+  (urutan acak); `fmt.Println(map)` aman karena kuncinya dicetak terurut. Semantik variabel loop mengikuti Go ≥ 1.22.
 - `explain`: jelaskan *kenapa*, sebut jebakannya. `concepts`: 1–3 istilah.
 
 ## Gaya bahasa

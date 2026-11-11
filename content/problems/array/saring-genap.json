@@ -30,7 +30,8 @@
   ],
   "solutions": {
     "javascript": "function saringGenap(arr) {\n  return arr.filter(x => x % 2 === 0);\n}",
-    "python": "def saring_genap(arr):\n    return [x for x in arr if x % 2 == 0]"
+    "python": "def saring_genap(arr):\n    return [x for x in arr if x % 2 == 0]",
+    "go": "func saringGenap(arr []int) []int {\n\thasil := []int{}\n\tfor _, x := range arr {\n\t\tif x%2 == 0 {\n\t\t\thasil = append(hasil, x)\n\t\t}\n\t}\n\treturn hasil\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -38,6 +39,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }
