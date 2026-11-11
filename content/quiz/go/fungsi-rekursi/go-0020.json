@@ -1,0 +1,18 @@
+{
+  "id": "go-0020",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "fungsi-rekursi",
+  "level": "Mudah",
+  "title": "Nilai vs pointer",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc ubah(x int) {\n\tx = 100\n}\n\nfunc ubahPtr(x *int) {\n\t*x = 100\n}\n\nfunc main() {\n\tn := 1\n\tubah(n)\n\tfmt.Println(n)\n\tubahPtr(&n)\n\tfmt.Println(n)\n}",
+  "answer": "1\n100",
+  "explain": "Argumen di Go dikirim sebagai salinan, jadi `ubah` hanya mengubah salinannya. `ubahPtr` menerima alamat n (&n), dan `*x = 100` menulis langsung ke variabel aslinya.",
+  "concepts": ["pointer", "pass by value"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

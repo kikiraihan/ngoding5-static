@@ -10,7 +10,7 @@ import { useProgress } from '@/stores/progress';
 import { setHead } from '@/lib/head';
 import { load, save } from '@/lib/storage';
 import { toast } from '@/lib/toast';
-import type { LangId, Quiz } from '@/lib/types';
+import { asLangId, type LangId, type Quiz } from '@/lib/types';
 
 const route = useRoute();
 const router = useRouter();
@@ -19,7 +19,7 @@ const settings = useSettings();
 const progress = useProgress();
 
 settings.mode = 'quiz';
-const langId = computed<LangId>(() => (route.params.lang === 'python' ? 'python' : 'javascript'));
+const langId = computed<LangId>(() => asLangId(route.params.lang) ?? 'javascript');
 watch(langId, (l) => (settings.lang = l), { immediate: true });
 const lang = computed(() => catalog.lang(langId.value));
 const id = computed(() => (route.params.id ? String(route.params.id) : ''));

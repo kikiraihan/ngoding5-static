@@ -30,7 +30,8 @@
   ],
   "solutions": {
     "javascript": "function nilaiHuruf(nilai) {\n  if (nilai < 0 || nilai > 100) return \"Tidak valid\";\n  if (nilai >= 85) return \"A\";\n  if (nilai >= 70) return \"B\";\n  if (nilai >= 55) return \"C\";\n  if (nilai >= 40) return \"D\";\n  return \"E\";\n}",
-    "python": "def nilai_huruf(nilai):\n    if nilai < 0 or nilai > 100:\n        return \"Tidak valid\"\n    for batas, huruf in ((85, \"A\"), (70, \"B\"), (55, \"C\"), (40, \"D\")):\n        if nilai >= batas:\n            return huruf\n    return \"E\""
+    "python": "def nilai_huruf(nilai):\n    if nilai < 0 or nilai > 100:\n        return \"Tidak valid\"\n    for batas, huruf in ((85, \"A\"), (70, \"B\"), (55, \"C\"), (40, \"D\")):\n        if nilai >= batas:\n            return huruf\n    return \"E\"",
+    "go": "func nilaiHuruf(nilai int) string {\n\tswitch {\n\tcase nilai < 0 || nilai > 100:\n\t\treturn \"Tidak valid\"\n\tcase nilai >= 85:\n\t\treturn \"A\"\n\tcase nilai >= 70:\n\t\treturn \"B\"\n\tcase nilai >= 55:\n\t\treturn \"C\"\n\tcase nilai >= 40:\n\t\treturn \"D\"\n\tdefault:\n\t\treturn \"E\"\n\t}\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -38,6 +39,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

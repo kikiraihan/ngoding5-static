@@ -35,8 +35,46 @@ function pyStr(s: string): string {
   return q + s.replace(/\\/g, '\\\\').replace(new RegExp(q, 'g'), '\\' + q).replace(/\n/g, '\\n').replace(/\t/g, '\\t') + q;
 }
 
-/** Tulis nilai sebagai literal bahasa tertentu: JS → ["a", true, null], Python → ['a', True, None]. */
-export function lit(v: unknown, lang: LangId): string {
+const GO_TYPES: Record<string, string> = {
+  int: 'int',
+  float: 'float64',
+  bool: 'bool',
+  str: 'string',
+  'int[]': '[]int',
+  'str[]': '[]string',
+  'int[][]': '[][]int',
+  'dict<str,int>': 'map[string]int',
+};
+
+/** Tebak tipe soal dari nilai, dipakai bila tipe tidak diberikan (mis. hasil yang ditampilkan). */
+function guessType(v: unknown): string {
+  if (typeof v === 'boolean') return 'bool';
+  if (typeof v === 'number') return Number.isInteger(v) ? 'int' : 'float';
+  if (typeof v === 'string') return 'str';
+  if (Array.isArray(v)) {
+    if (v.some((x) => Array.isArray(x))) return 'int[][]';
+    return v.some((x) => typeof x === 'string') ? 'str[]' : 'int[]';
+  }
+  return 'dict<str,int>';
+}
+
+/** Literal Go: []int{1, 2}, map[string]int{"a": 1}, [][]int{{1}, {2}}. */
+function goLit(v: unknown, type?: string, inner = false): string {
+  if (v === null || v === undefined) return 'nil';
+  // 2 bertipe float ditulis 2.0 agar tidak terbaca sebagai int saat disimpan di `any`
+  if (typeof v === 'number' && type === 'float' && Number.isInteger(v)) return v.toFixed(1);
+  if (typeof v !== 'object') return typeof v === 'string' ? JSON.stringify(v) : String(v);
+  const t = type && GO_TYPES[type] ? type : guessType(v);
+  // di dalam [][]int, elemen ditulis tanpa nama tipe: {1, 2}
+  const prefix = inner ? '' : GO_TYPES[t];
+  if (Array.isArray(v)) return `${prefix}{${v.map((x) => goLit(x, t === 'int[][]' ? 'int[]' : undefined, t === 'int[][]')).join(', ')}}`;
+  const entries = Object.entries(v as Record<string, unknown>);
+  return `${prefix}{${entries.map(([k, x]) => `${JSON.stringify(k)}: ${goLit(x)}`).join(', ')}}`;
+}
+
+/** Tulis nilai sebagai literal bahasa tertentu: JS → ["a", true, null], Python → ['a', True, None], Go → []string{"a"}. */
+export function lit(v: unknown, lang: LangId, type?: string): string {
+  if (lang === 'go') return goLit(v, type);
   if (v === undefined) return lang === 'python' ? 'None' : 'undefined';
   if (v === null) return lang === 'python' ? 'None' : 'null';
   if (typeof v === 'boolean') return lang === 'python' ? (v ? 'True' : 'False') : String(v);
@@ -56,8 +94,9 @@ export function lit(v: unknown, lang: LangId): string {
   return String(v);
 }
 
-export function callStr(fnName: string, args: unknown[], lang: LangId): string {
-  return `${fnNameFor(fnName, lang)}(${args.map((a) => lit(a, lang)).join(', ')})`;
+/** `types` (opsional) = tipe tiap argumen, agar literal Go bisa menulis nama tipenya. */
+export function callStr(fnName: string, args: unknown[], lang: LangId, types?: string[]): string {
+  return `${fnNameFor(fnName, lang)}(${args.map((a, i) => lit(a, lang, types?.[i])).join(', ')})`;
 }
 
 /** Normalisasi jawaban Tebak Output (FE-21). */

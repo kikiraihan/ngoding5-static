@@ -1,0 +1,18 @@
+{
+  "id": "go-0001",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "operator-tipe-data",
+  "level": "Mudah",
+  "title": "Pembagian bilangan bulat",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tfmt.Println(7 / 2)\n\tfmt.Println(7.0 / 2)\n\tfmt.Println(-7 / 2)\n}",
+  "answer": "3\n3.5\n-3",
+  "explain": "Jika kedua operand bilangan bulat, `/` adalah pembagian bulat dan hasilnya dipotong ke arah nol: 7/2 = 3 dan -7/2 = -3 (bukan -4). Konstanta 7.0 bertipe float, jadi 7.0/2 = 3.5.",
+  "concepts": ["pembagian bulat", "konstanta"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

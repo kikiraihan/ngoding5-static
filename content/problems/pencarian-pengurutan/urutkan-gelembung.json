@@ -33,7 +33,8 @@
   ],
   "solutions": {
     "javascript": "function bubbleSort(arr) {\n  const a = arr.slice();\n  for (let i = 0; i < a.length - 1; i++) {\n    let tukar = false;\n    for (let j = 0; j < a.length - 1 - i; j++) {\n      if (a[j] > a[j + 1]) {\n        [a[j], a[j + 1]] = [a[j + 1], a[j]];\n        tukar = true;\n      }\n    }\n    if (!tukar) break;\n  }\n  return a;\n}",
-    "python": "def bubble_sort(arr):\n    a = list(arr)\n    n = len(a)\n    for i in range(n - 1):\n        tukar = False\n        for j in range(n - 1 - i):\n            if a[j] > a[j + 1]:\n                a[j], a[j + 1] = a[j + 1], a[j]\n                tukar = True\n        if not tukar:\n            break\n    return a"
+    "python": "def bubble_sort(arr):\n    a = list(arr)\n    n = len(a)\n    for i in range(n - 1):\n        tukar = False\n        for j in range(n - 1 - i):\n            if a[j] > a[j + 1]:\n                a[j], a[j + 1] = a[j + 1], a[j]\n                tukar = True\n        if not tukar:\n            break\n    return a",
+    "go": "func bubbleSort(arr []int) []int {\n\thasil := append([]int{}, arr...) // salin agar arr asli tidak berubah\n\tfor akhir := len(hasil) - 1; akhir > 0; akhir-- {\n\t\ttertukar := false\n\t\tfor i := 0; i < akhir; i++ {\n\t\t\tif hasil[i] > hasil[i+1] {\n\t\t\t\thasil[i], hasil[i+1] = hasil[i+1], hasil[i]\n\t\t\t\ttertukar = true\n\t\t\t}\n\t\t}\n\t\tif !tertukar {\n\t\t\tbreak\n\t\t}\n\t}\n\treturn hasil\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -41,6 +42,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

@@ -24,7 +24,8 @@
   ],
   "solutions": {
     "javascript": "function apakahTerurut(arr) {\n  for (let i = 0; i + 1 < arr.length; i++) if (arr[i] > arr[i + 1]) return false;\n  return true;\n}",
-    "python": "def apakah_terurut(arr):\n    return all(arr[i] <= arr[i + 1] for i in range(len(arr) - 1))"
+    "python": "def apakah_terurut(arr):\n    return all(arr[i] <= arr[i + 1] for i in range(len(arr) - 1))",
+    "go": "func apakahTerurut(arr []int) bool {\n\tfor i := 1; i < len(arr); i++ {\n\t\tif arr[i-1] > arr[i] {\n\t\t\treturn false\n\t\t}\n\t}\n\treturn true\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -32,6 +33,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

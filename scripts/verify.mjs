@@ -9,10 +9,10 @@ import { RUNNERS } from './lib/runners.mjs';
 
 const argv = process.argv.slice(2);
 const flags = { dry: argv.includes('--dry'), quiet: argv.includes('--quiet') };
-let langs = ['javascript', 'python'];
+let langs = ['javascript', 'python', 'go'];
 const li = argv.indexOf('--lang');
 if (li >= 0) {
-  const alias = { js: 'javascript', py: 'python' };
+  const alias = { js: 'javascript', py: 'python', golang: 'go' };
   langs = argv[li + 1].split(',').map((l) => alias[l] || l);
 }
 const positional = argv.filter((a, i) => !a.startsWith('--') && argv[i - 1] !== '--lang');
@@ -21,6 +21,7 @@ const { problems, quizzes } = resolveTargets(positional);
 let failed = 0;
 let passed = 0;
 const failures = [];
+const skipped = new Set();
 
 function short(v) {
   const s = JSON.stringify(v);
@@ -36,10 +37,15 @@ export function verifyProblem(data) {
     const runner = RUNNERS[lang];
     if (!runner) continue;
     if (!code) {
-      report[lang] = { passed: false, reason: 'solusi tidak ada' };
+      // Solusi bahasa opsional (mis. Go) boleh belum ada.
+      if (!runner.optional) report[lang] = { passed: false, reason: 'solusi tidak ada' };
       continue;
     }
-    const res = runner.run({ kind: 'problem', code, fn: runner.fnName(data.function.name), tests: data.tests });
+    if (runner.available && !runner.available()) {
+      skipped.add(lang);
+      continue;
+    }
+    const res = runner.run({ kind: 'problem', code, fn: runner.fnName(data.function.name), tests: data.tests, sig: data.function });
     if (res.fatal) {
       report[lang] = { passed: false, reason: res.fatal };
     } else {
@@ -67,11 +73,22 @@ export function verifyProblem(data) {
       }
     });
   }
+  if (outputs.javascript && outputs.go) {
+    outputs.javascript.forEach((v, i) => {
+      if (!deepEq(v, outputs.go[i], data.compare || 'exact') && report.go.passed && report.javascript.passed) {
+        report.go = { passed: false, reason: `#${i} hasil JS dan Go berbeda` };
+      }
+    });
+  }
   return { report, verification };
 }
 
 export function verifyQuiz(data) {
   const runner = RUNNERS[data.lang];
+  if (runner.available && !runner.available()) {
+    skipped.add(data.lang);
+    return { report: { passed: true, skipped: true }, verification: data.verification };
+  }
   const res = runner.run({ kind: 'quiz', code: data.code });
   let report;
   if (res.fatal) report = { passed: false, reason: res.fatal };
@@ -128,6 +145,7 @@ if (isMain) {
       if (!report.passed) console.log(`    ${report.reason}`);
     }
   }
+  if (skipped.size) console.log(c.warn(`\n! Runtime ${[...skipped].join(', ')} tidak ditemukan: verifikasinya dilewati (status lama dipertahankan).`));
   console.log(`\nVerifikasi: ${c.ok(passed + ' lolos')}, ${failed ? c.bad(failed + ' gagal') : '0 gagal'} dari ${passed + failed} soal.`);
   if (failed) process.exit(1);
 }

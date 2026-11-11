@@ -1,0 +1,18 @@
+{
+  "id": "go-0012",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "perulangan-kondisi",
+  "level": "Sulit",
+  "title": "Variabel range adalah salinan",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tangka := []int{1, 2, 3}\n\tfor _, x := range angka {\n\t\tx *= 10\n\t\tfmt.Print(x, \" \")\n\t}\n\tfmt.Println()\n\tfmt.Println(angka)\n}",
+  "answer": "10 20 30\n[1 2 3]",
+  "explain": "Variabel x berisi salinan elemen, jadi mengubah x tidak mengubah slice. Untuk mengubah isi slice, pakai indeks: `angka[i] *= 10`.",
+  "concepts": ["range", "salinan nilai"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

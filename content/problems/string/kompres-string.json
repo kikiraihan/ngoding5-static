@@ -30,7 +30,8 @@
   ],
   "solutions": {
     "javascript": "function kompres(s) {\n  let out = \"\";\n  for (let i = 0; i < s.length; ) {\n    let j = i;\n    while (j < s.length && s[j] === s[i]) j++;\n    out += s[i] + (j - i);\n    i = j;\n  }\n  return out.length < s.length ? out : s;\n}",
-    "python": "def kompres(s):\n    out = []\n    i = 0\n    while i < len(s):\n        j = i\n        while j < len(s) and s[j] == s[i]:\n            j += 1\n        out.append(s[i] + str(j - i))\n        i = j\n    hasil = \"\".join(out)\n    return hasil if len(hasil) < len(s) else s"
+    "python": "def kompres(s):\n    out = []\n    i = 0\n    while i < len(s):\n        j = i\n        while j < len(s) and s[j] == s[i]:\n            j += 1\n        out.append(s[i] + str(j - i))\n        i = j\n    hasil = \"\".join(out)\n    return hasil if len(hasil) < len(s) else s",
+    "go": "import (\n\t\"strconv\"\n\t\"strings\"\n)\n\nfunc kompres(s string) string {\n\thuruf := []rune(s)\n\tvar sb strings.Builder\n\tfor i := 0; i < len(huruf); {\n\t\tj := i\n\t\tfor j < len(huruf) && huruf[j] == huruf[i] {\n\t\t\tj++\n\t\t}\n\t\tsb.WriteRune(huruf[i])\n\t\tsb.WriteString(strconv.Itoa(j - i))\n\t\ti = j\n\t}\n\tif hasil := sb.String(); len([]rune(hasil)) < len(huruf) {\n\t\treturn hasil\n\t}\n\treturn s\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -38,6 +39,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

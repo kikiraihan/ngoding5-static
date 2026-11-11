@@ -1,0 +1,18 @@
+{
+  "id": "go-0022",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "fungsi-rekursi",
+  "level": "Sedang",
+  "title": "Cetak sebelum dan sesudah rekursi",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc cetak(n int) {\n\tif n == 0 {\n\t\treturn\n\t}\n\tfmt.Print(n, \" \")\n\tcetak(n - 1)\n\tfmt.Print(n, \" \")\n}\n\nfunc main() {\n\tcetak(3)\n\tfmt.Println()\n}",
+  "answer": "3 2 1 1 2 3",
+  "explain": "Print pertama terjadi saat turun (3, 2, 1). Setelah mencapai n = 0, setiap panggilan melanjutkan baris setelah rekursi saat kembali naik, dengan urutan terbalik (1, 2, 3).",
+  "concepts": ["rekursi", "call stack"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "go-0013",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "string-koleksi",
+  "level": "Mudah",
+  "title": "Kunci map yang tidak ada",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tm := map[string]int{\"a\": 1}\n\tfmt.Println(m[\"a\"], m[\"b\"], len(m))\n}",
+  "answer": "1 0 1",
+  "explain": "Membaca kunci yang tidak ada di map tidak error, hasilnya nilai nol tipe tersebut (0 untuk int). Membaca juga tidak menambah kunci, jadi panjang map tetap 1.",
+  "concepts": ["map", "nilai nol"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

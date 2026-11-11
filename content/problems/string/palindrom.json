@@ -32,7 +32,8 @@
   ],
   "solutions": {
     "javascript": "function isPalindrom(s) {\n  const t = s.toLowerCase().replace(/[^a-z0-9]/g, \"\");\n  let i = 0, j = t.length - 1;\n  while (i < j) {\n    if (t[i] !== t[j]) return false;\n    i++; j--;\n  }\n  return true;\n}",
-    "python": "def is_palindrom(s):\n    t = [ch for ch in s.lower() if ch.isalnum()]\n    return t == t[::-1]"
+    "python": "def is_palindrom(s):\n    t = [ch for ch in s.lower() if ch.isalnum()]\n    return t == t[::-1]",
+    "go": "import \"unicode\"\n\nfunc isPalindrom(s string) bool {\n\tvar bersih []rune\n\tfor _, ch := range s {\n\t\tch = unicode.ToLower(ch)\n\t\tif (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9') {\n\t\t\tbersih = append(bersih, ch)\n\t\t}\n\t}\n\tfor i, j := 0, len(bersih)-1; i < j; i, j = i+1, j-1 {\n\t\tif bersih[i] != bersih[j] {\n\t\t\treturn false\n\t\t}\n\t}\n\treturn true\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -40,6 +41,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // ngoding new problem --tema <slug> --level <lv> --id <slug> [--title "..."]
-// ngoding new quiz --lang <js|py> --tema <slug> --level <lv>
+// ngoding new quiz --lang <js|py|go> --tema <slug> --level <lv>
 import fs from 'node:fs';
 import path from 'node:path';
 import { PROBLEMS_DIR, QUIZ_DIR, loadMeta, quizFiles, findById, writeJson, rel, today, c } from './lib/content.mjs';
@@ -63,9 +63,9 @@ if (kind === 'problem') {
     fs.writeFileSync(mdFile, '## Ide\n\nTODO\n\n## Langkah\n\n1. TODO\n\n## Kompleksitas\n\n- Waktu: O(?)\n- Ruang: O(?)\n\n## Variasi latihan\n\n- TODO\n');
   console.log(`${c.ok('✓')} dibuat ${rel(file)} dan ${rel(mdFile)}`);
 } else if (kind === 'quiz') {
-  const alias = { js: 'javascript', py: 'python' };
+  const alias = { js: 'javascript', py: 'python', golang: 'go' };
   const lang = meta.languages.find((l) => l.id === (alias[opt.lang] || opt.lang));
-  if (!lang) fail('--lang wajib: js atau py');
+  if (!lang) fail('--lang wajib: js, py, atau go');
   const tema = needTema('quiz');
   const used = quizFiles()
     .map((f) => path.basename(f, '.json'))
@@ -84,7 +84,12 @@ if (kind === 'problem') {
       tema: tema.slug,
       level,
       title: 'TODO judul singkat',
-      code: lang.id === 'python' ? `print("TODO ${id}")` : `console.log("TODO ${id}");`,
+      code:
+        lang.id === 'python'
+          ? `print("TODO ${id}")`
+          : lang.id === 'go'
+            ? `package main\n\nimport "fmt"\n\nfunc main() {\n\tfmt.Println("TODO ${id}")\n}`
+            : `console.log("TODO ${id}");`,
       answer: 'TODO',
       explain: 'TODO: jelaskan kenapa outputnya begitu.',
       concepts: [],

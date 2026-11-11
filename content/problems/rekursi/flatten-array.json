@@ -30,7 +30,8 @@
   ],
   "solutions": {
     "javascript": "function ratakan(grid) {\n  if (grid.length === 0) return [];\n  return [...grid[0], ...ratakan(grid.slice(1))];\n}",
-    "python": "def ratakan(grid):\n    out = []\n    for baris in grid:\n        out.extend(baris)\n    return out"
+    "python": "def ratakan(grid):\n    out = []\n    for baris in grid:\n        out.extend(baris)\n    return out",
+    "go": "func ratakan(grid [][]int) []int {\n\tif len(grid) == 0 {\n\t\treturn []int{}\n\t}\n\t// baris pertama + hasil meratakan sisa baris\n\treturn append(append([]int{}, grid[0]...), ratakan(grid[1:])...)\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -38,6 +39,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

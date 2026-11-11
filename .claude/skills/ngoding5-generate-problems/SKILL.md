@@ -23,7 +23,7 @@ Contoh: `/ngoding5-generate-problems jumlah=20 tema=rekursi level=Sulit topik="b
    semua ide harus berkaitan dengan topik itu, tapi tetap berbeda satu sama lain.
 4. Untuk setiap ide:
    - `scripts/ngoding new problem --tema <slug> --level <Lv> --id <slug> --title "<Judul>" --by claude-skill --topik "<topik>"`
-   - Isi JSON lengkap (deskripsi, tanda tangan, 4–8 kasus uji dengan expected yang dihitung dari deskripsi, hints, commonMistakes, dua solusi independen) dan MD pembahasan.
+   - Isi JSON lengkap (deskripsi, tanda tangan, 4–8 kasus uji dengan expected yang dihitung dari deskripsi, hints, commonMistakes, dua solusi independen JS & Python, plus solusi Go bila `go` terpasang) dan MD pembahasan.
 5. `scripts/ngoding validate <file baru...>` lalu `scripts/ngoding verify <file baru...>`.
    Bila JS dan Python berbeda hasil, cari mana yang salah terhadap **deskripsi**, bukan sekadar menyamakan.
 6. `scripts/ngoding dedupe` — bila soal baru mirip soal lama (skor ≥ 0.6), ganti atau buang.

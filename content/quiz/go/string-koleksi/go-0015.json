@@ -1,0 +1,18 @@
+{
+  "id": "go-0015",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "string-koleksi",
+  "level": "Sedang",
+  "title": "Idiom comma ok",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tstok := map[string]int{\"apel\": 0}\n\tn, ada := stok[\"apel\"]\n\tfmt.Println(n, ada)\n\tn, ada = stok[\"jeruk\"]\n\tfmt.Println(n, ada)\n}",
+  "answer": "0 true\n0 false",
+  "explain": "Keduanya bernilai 0, jadi nilai saja tidak bisa membedakan \"stok nol\" dan \"barang tidak ada\". Nilai kedua (ok) memberi tahu apakah kuncinya benar-benar ada di map.",
+  "concepts": ["map", "comma ok"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

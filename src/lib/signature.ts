@@ -13,8 +13,17 @@ function typeOf(t: string, lang: Language): string {
   return lang.types[t] ?? t;
 }
 
+/** Nilai nol per tipe Go, untuk `return` di template awal agar kode langsung bisa dikompilasi. */
+function goZero(t: string): string {
+  if (t === 'int' || t === 'float') return '0';
+  if (t === 'bool') return 'false';
+  if (t === 'str') return '""';
+  return 'nil';
+}
+
 /** Tanda tangan ringkas untuk ditampilkan: fizzBuzz(n: number) → string[] */
 export function signature(fn: FnSig, lang: Language): string {
+  if (lang.id === 'go') return `func ${fn.name}(${fn.params.map((p) => `${p.name} ${typeOf(p.type, lang)}`).join(', ')}) ${typeOf(fn.returns, lang)}`;
   const params = fn.params.map((p) => `${fnNameFor(p.name, lang.id)}: ${typeOf(p.type, lang)}`).join(', ');
   return lang.id === 'python'
     ? `def ${fnNameFor(fn.name, 'python')}(${params}) -> ${typeOf(fn.returns, lang)}`
@@ -22,6 +31,12 @@ export function signature(fn: FnSig, lang: Language): string {
 }
 
 export function starter(fn: FnSig, lang: Language): string {
+  if (lang.id === 'go') {
+    return (
+      `// Boleh menambah import di atas fungsi, mis. import "strings".\n\n` +
+      `${signature(fn, lang)} {\n\t// tulis kode kamu di sini\n\treturn ${goZero(fn.returns)}\n}\n`
+    );
+  }
   if (lang.id === 'python') {
     const params = fn.params.map((p) => toSnake(p.name)).join(', ');
     const doc = fn.params.map((p) => `${toSnake(p.name)}: ${typeOf(p.type, lang)}`).join(', ');

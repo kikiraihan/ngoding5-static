@@ -1,0 +1,18 @@
+{
+  "id": "go-0010",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "perulangan-kondisi",
+  "level": "Sedang",
+  "title": "range pada string",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tfor i, ch := range \"aé!\" {\n\t\tfmt.Println(i, string(ch))\n\t}\n}",
+  "answer": "0 a\n1 é\n3 !",
+  "explain": "`range` pada string berjalan per rune, tetapi indeksnya adalah posisi byte. é memakai 2 byte (indeks 1 dan 2), sehingga karakter berikutnya ada di indeks 3.",
+  "concepts": ["range", "rune", "UTF-8"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

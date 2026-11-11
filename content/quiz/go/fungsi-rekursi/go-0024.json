@@ -1,0 +1,18 @@
+{
+  "id": "go-0024",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "fungsi-rekursi",
+  "level": "Sulit",
+  "title": "Closure penghitung",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc penghitung() func() int {\n\tn := 0\n\treturn func() int {\n\t\tn++\n\t\treturn n\n\t}\n}\n\nfunc main() {\n\ta := penghitung()\n\tb := penghitung()\n\tfmt.Println(a(), a(), b(), a())\n}",
+  "answer": "1 2 1 3",
+  "explain": "Setiap panggilan `penghitung()` membuat variabel n baru yang \"ditangkap\" oleh closure-nya. a dan b punya n masing-masing: a menghasilkan 1, 2, lalu 3, sedangkan b mulai lagi dari 1.",
+  "concepts": ["closure", "fungsi sebagai nilai"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

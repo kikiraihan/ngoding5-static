@@ -15,11 +15,13 @@ usage() {
 ngoding — CLI konten Ngoding5
 
   new problem --tema <slug> --level <lv> --id <slug> [--title "..."] [--by x] [--topik "..."]
-  new quiz --lang <js|py> --tema <slug> --level <lv> [--count N] [--by x] [--topik "..."]
+  new quiz --lang <js|py|go> --tema <slug> --level <lv> [--count N] [--by x] [--topik "..."]
   validate [path|id...] [--strict] [--require-verified]
                                        cek schema, slug unik, tema/level, duplikat, MD ada
-  verify [path|id...] [--lang js,py]  jalankan solusi & kode quiz, tulis field verification
-  fix-expected <id> [--from js|py] [--yes]
+  verify [path|id...] [--lang js,py,go]
+                                       jalankan solusi & kode quiz, tulis field verification
+                                       (Go dilewati bila perintah go tidak terpasang)
+  fix-expected <id> [--from js|py|go] [--yes]
   stats [--json]                       cakupan per tema × level × bahasa
   dedupe [--threshold 0.6]             cari soal mirip
   remove <id> [--yes]                  hapus soal beserta MD-nya

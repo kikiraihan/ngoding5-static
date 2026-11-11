@@ -29,7 +29,8 @@
   ],
   "solutions": {
     "javascript": "function langkahCollatz(n) {\n  let langkah = 0;\n  while (n !== 1) {\n    n = n % 2 === 0 ? n / 2 : 3 * n + 1;\n    langkah++;\n  }\n  return langkah;\n}",
-    "python": "def langkah_collatz(n):\n    langkah = 0\n    while n != 1:\n        n = n // 2 if n % 2 == 0 else 3 * n + 1\n        langkah += 1\n    return langkah"
+    "python": "def langkah_collatz(n):\n    langkah = 0\n    while n != 1:\n        n = n // 2 if n % 2 == 0 else 3 * n + 1\n        langkah += 1\n    return langkah",
+    "go": "func langkahCollatz(n int) int {\n\tlangkah := 0\n\tfor n != 1 {\n\t\tif n%2 == 0 {\n\t\t\tn /= 2\n\t\t} else {\n\t\t\tn = 3*n + 1\n\t\t}\n\t\tlangkah++\n\t}\n\treturn langkah\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -37,6 +38,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

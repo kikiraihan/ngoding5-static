@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// ngoding fix-expected <id> [--from js|py] [--yes]
+// ngoding fix-expected <id> [--from js|py|go] [--yes]
 // Mengisi ulang `expected` dari hasil solusi rujukan. Dipakai hati-hati: WAJIB review diff.
 import { findById, readJson, writeJson, today, rel, c } from './lib/content.mjs';
 import { deepEq } from './lib/compare.mjs';
@@ -8,15 +8,15 @@ import { RUNNERS } from './lib/runners.mjs';
 const argv = process.argv.slice(2);
 const id = argv.find((a) => !a.startsWith('--') && argv[argv.indexOf(a) - 1] !== '--from');
 const fromArg = argv.includes('--from') ? argv[argv.indexOf('--from') + 1] : 'js';
-const lang = { js: 'javascript', py: 'python' }[fromArg] || fromArg;
+const lang = { js: 'javascript', py: 'python', golang: 'go' }[fromArg] || fromArg;
 const found = id && findById(id);
 if (!found || found.kind !== 'problem') {
-  console.error(c.bad('✗ ') + 'pakai: ngoding fix-expected <id-soal-tulis-kode> [--from js|py]');
+  console.error(c.bad('✗ ') + 'pakai: ngoding fix-expected <id-soal-tulis-kode> [--from js|py|go]');
   process.exit(1);
 }
 const data = readJson(found.file);
 const runner = RUNNERS[lang];
-const res = runner.run({ kind: 'problem', code: data.solutions[lang], fn: runner.fnName(data.function.name), tests: data.tests });
+const res = runner.run({ kind: 'problem', code: data.solutions[lang], fn: runner.fnName(data.function.name), tests: data.tests, sig: data.function });
 if (res.fatal) {
   console.error(c.bad('✗ ') + res.fatal);
   process.exit(1);

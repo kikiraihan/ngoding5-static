@@ -1,0 +1,18 @@
+{
+  "id": "go-0002",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "operator-tipe-data",
+  "level": "Mudah",
+  "title": "Sisa bagi bilangan negatif",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tfmt.Println(7%3, -7%3, 7%-3)\n}",
+  "answer": "1 -1 1",
+  "explain": "Di Go, tanda hasil `%` mengikuti operand kiri (pembagian dipotong ke arah nol). Jadi -7 % 3 = -1, sedangkan 7 % -3 = 1. Ini berbeda dengan Python yang memberi 2 untuk -7 % 3.",
+  "concepts": ["modulo", "operator"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

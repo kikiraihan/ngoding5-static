@@ -23,6 +23,7 @@ const catalog = useCatalog();
 const visible = computed(() => props.problem.tests.filter((t) => !t.hidden));
 const hiddenCount = computed(() => props.problem.tests.length - visible.value.length);
 const sig = computed(() => signature(props.problem.function, props.lang));
+const paramTypes = computed(() => props.problem.function.params.map((p) => p.type));
 
 const solution = computed(() => {
   const own = props.problem.solutions[props.lang.id];
@@ -58,7 +59,7 @@ const solution = computed(() => {
       <p class="section-label">Kasus uji</p>
       <ul class="case-list">
         <li v-for="(t, i) in visible" :key="i">
-          {{ callStr(problem.function.name, t.args, lang.id) }}<span class="arrow">→</span>{{ lit(t.expected, lang.id) }}
+          {{ callStr(problem.function.name, t.args, lang.id, paramTypes) }}<span class="arrow">→</span>{{ lit(t.expected, lang.id, problem.function.returns) }}
         </li>
       </ul>
       <p v-if="hiddenCount" class="muted" style="font-size: 13px; margin-top: 6px">+ {{ hiddenCount }} kasus tersembunyi ikut dijalankan.</p>

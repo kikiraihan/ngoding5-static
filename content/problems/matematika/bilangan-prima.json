@@ -27,7 +27,8 @@
   ],
   "solutions": {
     "javascript": "function isPrima(n) {\n  if (n < 2) return false;\n  for (let d = 2; d * d <= n; d++) if (n % d === 0) return false;\n  return true;\n}",
-    "python": "def is_prima(n):\n    if n < 2:\n        return False\n    return all(n % d for d in range(2, n))"
+    "python": "def is_prima(n):\n    if n < 2:\n        return False\n    return all(n % d for d in range(2, n))",
+    "go": "func isPrima(n int) bool {\n\tif n < 2 {\n\t\treturn false\n\t}\n\tfor d := 2; d*d <= n; d++ {\n\t\tif n%d == 0 {\n\t\t\treturn false\n\t\t}\n\t}\n\treturn true\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -35,6 +36,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

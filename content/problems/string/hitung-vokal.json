@@ -27,7 +27,8 @@
   ],
   "solutions": {
     "javascript": "function hitungVokal(s) {\n  let n = 0;\n  for (const ch of s.toLowerCase()) if (\"aiueo\".includes(ch)) n++;\n  return n;\n}",
-    "python": "def hitung_vokal(s):\n    return sum(1 for ch in s.lower() if ch in \"aiueo\")"
+    "python": "def hitung_vokal(s):\n    return sum(1 for ch in s.lower() if ch in \"aiueo\")",
+    "go": "import \"strings\"\n\nfunc hitungVokal(s string) int {\n\tjumlah := 0\n\tfor _, ch := range strings.ToLower(s) {\n\t\tif strings.ContainsRune(\"aiueo\", ch) {\n\t\t\tjumlah++\n\t\t}\n\t}\n\treturn jumlah\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -35,6 +36,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

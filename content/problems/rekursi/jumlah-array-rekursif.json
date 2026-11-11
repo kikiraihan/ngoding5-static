@@ -24,7 +24,8 @@
   ],
   "solutions": {
     "javascript": "function jumlahRekursif(arr) {\n  if (arr.length === 0) return 0;\n  return arr[0] + jumlahRekursif(arr.slice(1));\n}",
-    "python": "def jumlah_rekursif(arr):\n    if not arr:\n        return 0\n    return arr[0] + jumlah_rekursif(arr[1:])"
+    "python": "def jumlah_rekursif(arr):\n    if not arr:\n        return 0\n    return arr[0] + jumlah_rekursif(arr[1:])",
+    "go": "func jumlahRekursif(arr []int) int {\n\tif len(arr) == 0 {\n\t\treturn 0\n\t}\n\treturn arr[0] + jumlahRekursif(arr[1:])\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -32,6 +33,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

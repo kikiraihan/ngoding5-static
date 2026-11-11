@@ -32,7 +32,8 @@
   ],
   "solutions": {
     "javascript": "function pangkat(a, n) {\n  if (n === 0) return 1;\n  return a * pangkat(a, n - 1);\n}",
-    "python": "def pangkat(a, n):\n    if n == 0:\n        return 1\n    setengah = pangkat(a, n // 2)\n    return setengah * setengah * (a if n % 2 else 1)"
+    "python": "def pangkat(a, n):\n    if n == 0:\n        return 1\n    setengah = pangkat(a, n // 2)\n    return setengah * setengah * (a if n % 2 else 1)",
+    "go": "func pangkat(a int, n int) int {\n\tif n == 0 {\n\t\treturn 1\n\t}\n\tsetengah := pangkat(a, n/2)\n\tif n%2 == 0 {\n\t\treturn setengah * setengah\n\t}\n\treturn setengah * setengah * a\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -40,6 +41,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

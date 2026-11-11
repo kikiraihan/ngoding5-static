@@ -1,0 +1,18 @@
+{
+  "id": "go-0023",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "fungsi-rekursi",
+  "level": "Sulit",
+  "title": "defer mengubah named return",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc hitung() (hasil int) {\n\tdefer func() {\n\t\thasil *= 2\n\t}()\n\thasil = 5\n\treturn hasil + 1\n}\n\nfunc main() {\n\tfmt.Println(hitung())\n}",
+  "answer": "12",
+  "explain": "`return hasil + 1` lebih dulu mengisi named return hasil = 6, lalu fungsi yang di-defer berjalan dan bisa mengubahnya menjadi 12 sebelum nilai benar-benar dikembalikan.",
+  "concepts": ["defer", "named return", "closure"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

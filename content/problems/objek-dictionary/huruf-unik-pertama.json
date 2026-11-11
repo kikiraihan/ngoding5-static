@@ -31,7 +31,8 @@
   ],
   "solutions": {
     "javascript": "function unikPertama(s) {\n  const hitung = new Map();\n  for (const ch of s) hitung.set(ch, (hitung.get(ch) || 0) + 1);\n  for (let i = 0; i < s.length; i++) if (hitung.get(s[i]) === 1) return i;\n  return -1;\n}",
-    "python": "def unik_pertama(s):\n    for i, ch in enumerate(s):\n        if s.count(ch) == 1:\n            return i\n    return -1"
+    "python": "def unik_pertama(s):\n    for i, ch in enumerate(s):\n        if s.count(ch) == 1:\n            return i\n    return -1",
+    "go": "func unikPertama(s string) int {\n\thuruf := []rune(s)\n\thitung := map[rune]int{}\n\tfor _, ch := range huruf {\n\t\thitung[ch]++\n\t}\n\tfor i, ch := range huruf {\n\t\tif hitung[ch] == 1 {\n\t\t\treturn i\n\t\t}\n\t}\n\treturn -1\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -39,6 +40,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

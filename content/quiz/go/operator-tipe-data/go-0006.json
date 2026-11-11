@@ -1,0 +1,18 @@
+{
+  "id": "go-0006",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "operator-tipe-data",
+  "level": "Sulit",
+  "title": "Konstanta vs variabel float",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tfmt.Println(0.1 + 0.2)\n\ta, b := 0.1, 0.2\n\tfmt.Println(a + b)\n\tfmt.Println(a+b == 0.3)\n}",
+  "answer": "0.3\n0.30000000000000004\nfalse",
+  "explain": "Konstanta tanpa tipe dihitung dengan presisi tinggi saat kompilasi, jadi 0.1 + 0.2 tepat 0.3. Begitu disimpan di variabel float64, penjumlahan memakai biner IEEE 754 sehingga muncul galat 0.30000000000000004 dan perbandingan == 0.3 bernilai false.",
+  "concepts": ["float64", "konstanta tanpa tipe"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

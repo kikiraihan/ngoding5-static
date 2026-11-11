@@ -31,7 +31,8 @@
   ],
   "solutions": {
     "javascript": "function fpb(a, b) {\n  while (b !== 0) [a, b] = [b, a % b];\n  return a;\n}",
-    "python": "def fpb(a, b):\n    if b == 0:\n        return a\n    return fpb(b, a % b)"
+    "python": "def fpb(a, b):\n    if b == 0:\n        return a\n    return fpb(b, a % b)",
+    "go": "func fpb(a int, b int) int {\n\tfor b != 0 {\n\t\ta, b = b, a%b\n\t}\n\treturn a\n}"
   },
   "source": "bank",
   "generator": { "by": "seed", "topik": null },
@@ -39,6 +40,7 @@
   "updatedAt": "2026-11-11",
   "verification": {
     "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
-    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" },
+    "go": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
   }
 }

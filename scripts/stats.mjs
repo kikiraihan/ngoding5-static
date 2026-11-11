@@ -23,6 +23,7 @@ const quiz = meta.temas.filter((t) => t.mode === 'quiz').map((t) => {
   return row;
 });
 const missingPy = problems.filter((p) => !p.solutions?.python).map((p) => p.id);
+const missingGo = problems.filter((p) => !p.solutions?.go).map((p) => p.id);
 const unverified = problems.filter((p) => !p.verification?.javascript?.passed || !p.verification?.python?.passed).map((p) => p.id);
 const noExplanation = loadProblems()
   .filter(({ file, data }) => {
@@ -34,7 +35,7 @@ const fewMistakes = problems.filter((p) => (p.commonMistakes || []).length < 2).
 const fewHints = problems.filter((p) => p.hints.length < 2).map((p) => p.id);
 
 if (asJson) {
-  console.log(JSON.stringify({ code, quiz, missingPy, unverified, noExplanation, fewMistakes, fewHints, totals: { problems: problems.length, quiz: quizzes.length } }, null, 2));
+  console.log(JSON.stringify({ code, quiz, missingPy, missingGo, unverified, noExplanation, fewMistakes, fewHints, totals: { problems: problems.length, quiz: quizzes.length } }, null, 2));
   process.exit(0);
 }
 
@@ -57,6 +58,7 @@ table([...quiz, qt], ['label', ...meta.languages.map((l) => l.id), ...levels], [
 
 const list = (title, arr) => console.log(`\n${arr.length ? c.warn('!') : c.ok('✓')} ${title}: ${arr.length}${arr.length ? c.dim(' — ' + arr.slice(0, 15).join(', ') + (arr.length > 15 ? ', …' : '')) : ''}`);
 list('Soal tanpa solusi Python', missingPy);
+list('Soal tanpa solusi Go', missingGo);
 list('Soal belum terverifikasi JS+Python', unverified);
 list('Soal tanpa/tipis pembahasan', noExplanation);
 list('Soal dengan < 2 kesalahan umum', fewMistakes);

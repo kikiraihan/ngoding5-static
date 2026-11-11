@@ -1,0 +1,18 @@
+{
+  "id": "go-0008",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "perulangan-kondisi",
+  "level": "Mudah",
+  "title": "continue melompati angka genap",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\ttotal := 0\n\tfor i := 1; i <= 10; i++ {\n\t\tif i%2 == 0 {\n\t\t\tcontinue\n\t\t}\n\t\ttotal += i\n\t}\n\tfmt.Println(total)\n}",
+  "answer": "25",
+  "explain": "`continue` langsung lanjut ke iterasi berikutnya, jadi hanya angka ganjil yang dijumlahkan: 1 + 3 + 5 + 7 + 9 = 25.",
+  "concepts": ["continue", "for"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}

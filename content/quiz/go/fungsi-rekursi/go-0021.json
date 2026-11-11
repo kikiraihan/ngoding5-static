@@ -1,0 +1,18 @@
+{
+  "id": "go-0021",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "go",
+  "tema": "fungsi-rekursi",
+  "level": "Sedang",
+  "title": "Urutan dan argumen defer",
+  "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tx := 1\n\tdefer fmt.Println(\"defer pertama:\", x)\n\tx = 2\n\tdefer fmt.Println(\"defer kedua:\", x)\n\tx = 3\n\tfmt.Println(\"akhir:\", x)\n}",
+  "answer": "akhir: 3\ndefer kedua: 2\ndefer pertama: 1",
+  "explain": "Pemanggilan `defer` dijalankan saat fungsi selesai dengan urutan terbalik (LIFO). Argumennya dievaluasi saat baris defer dibaca, bukan saat dijalankan, sehingga yang tercetak adalah nilai x pada saat itu: 2 lalu 1.",
+  "concepts": ["defer", "LIFO"],
+  "source": "generated",
+  "generator": { "by": "claude-skill", "topik": "latihan Go" },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "go 1.24" }
+}
