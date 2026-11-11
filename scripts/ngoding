@@ -14,8 +14,8 @@ usage() {
   cat <<'USAGE'
 ngoding — CLI konten Ngoding5
 
-  new problem --tema <slug> --level <lv> --id <slug> [--title "..."]
-  new quiz --lang <js|py> --tema <slug> --level <lv> [--count N]
+  new problem --tema <slug> --level <lv> --id <slug> [--title "..."] [--by x] [--topik "..."]
+  new quiz --lang <js|py> --tema <slug> --level <lv> [--count N] [--by x] [--topik "..."]
   validate [path|id...] [--strict] [--require-verified]
                                        cek schema, slug unik, tema/level, duplikat, MD ada
   verify [path|id...] [--lang js,py]  jalankan solusi & kode quiz, tulis field verification

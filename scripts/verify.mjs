@@ -55,7 +55,8 @@ export function verifyProblem(data) {
     }
     const prev = verification[lang];
     const runtime = runner.runtime();
-    if (!prev || prev.passed !== report[lang].passed || prev.runtime !== runtime)
+    // Tulis ulang hanya bila status berubah, agar beda versi runtime (lokal vs CI) tidak membuat diff.
+    if (!prev || prev.passed !== report[lang].passed)
       verification[lang] = { passed: report[lang].passed, at: today(), runtime };
   }
   // Verifikasi silang: dua implementasi independen harus memberi hasil sama.
@@ -81,7 +82,7 @@ export function verifyQuiz(data) {
   const prev = data.verification;
   const runtime = runner.runtime();
   const verification =
-    !prev || prev.passed !== report.passed || prev.runtime !== runtime ? { passed: report.passed, at: today(), runtime } : prev;
+    !prev || prev.passed !== report.passed ? { passed: report.passed, at: today(), runtime } : prev;
   return { report, verification, stdout: res.stdout };
 }
 

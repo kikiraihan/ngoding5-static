@@ -132,6 +132,7 @@ export function updateLock(ids) {
 export function removeFromLock(id) {
   if (!fs.existsSync(LOCK_FILE)) return;
   const lock = readJson(LOCK_FILE);
+  if (!lock.ids.includes(id)) return; // belum pernah tayang: tidak perlu dicatat
   lock.ids = lock.ids.filter((x) => x !== id);
   lock.removed = [...new Set([...(lock.removed || []), id])].sort();
   writeJson(LOCK_FILE, lock);
