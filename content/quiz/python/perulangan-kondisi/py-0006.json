@@ -1,0 +1,18 @@
+{
+  "id": "py-0006",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "perulangan-kondisi",
+  "level": "Sedang",
+  "title": "for-else",
+  "code": "for i in range(3):\n    if i == 5:\n        break\nelse:\n    print(\"selesai\", i)\n\nfor i in range(3):\n    if i == 1:\n        break\nelse:\n    print(\"tidak tercetak\")\nprint(i)",
+  "answer": "selesai 2\n1",
+  "explain": "Blok else pada for dijalankan hanya jika perulangan selesai tanpa break. Perulangan pertama tidak pernah break, jadi tercetak \"selesai 2\". Perulangan kedua break di i = 1 sehingga else dilewati, lalu print(i) mencetak 1.",
+  "concepts": ["for-else", "break"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}

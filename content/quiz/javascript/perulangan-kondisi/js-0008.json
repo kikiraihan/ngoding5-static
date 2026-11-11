@@ -1,0 +1,18 @@
+{
+  "id": "js-0008",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "perulangan-kondisi",
+  "level": "Sulit",
+  "title": "Switch tanpa break",
+  "code": "let hasil = \"\";\nswitch (2) {\n  case 1: hasil += \"a\";\n  case 2: hasil += \"b\";\n  case 3: hasil += \"c\";\n    break;\n  default: hasil += \"d\";\n}\nconsole.log(hasil);",
+  "answer": "bc",
+  "explain": "switch melompat ke case 2 lalu \"jatuh\" ke case berikutnya karena tidak ada break, sampai bertemu break di case 3. Hasilnya \"bc\".",
+  "concepts": ["switch", "fall-through"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

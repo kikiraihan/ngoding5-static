@@ -1,0 +1,33 @@
+name: content-ci
+
+on:
+  pull_request:
+    paths: ['content/**', 'schemas/**', 'scripts/**', 'src/**', 'package*.json', '.github/workflows/content-ci.yml']
+  push:
+    branches: [main]
+    paths: ['content/**', 'schemas/**', 'scripts/**', 'src/**', 'package*.json', '.github/workflows/content-ci.yml']
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - name: ngoding check (validate + verify + build data)
+        run: bash scripts/ngoding check
+      - name: Pastikan file konten tidak berubah setelah verify
+        run: |
+          if ! git diff --exit-code -- content/; then
+            echo "::error::Field verification/id-lock berubah. Jalankan 'scripts/ngoding check' secara lokal lalu commit hasilnya."
+            exit 1
+          fi
+      - run: npm run typecheck
+      - run: npx vite build

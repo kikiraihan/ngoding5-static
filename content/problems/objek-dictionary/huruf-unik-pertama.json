@@ -1,0 +1,44 @@
+{
+  "id": "huruf-unik-pertama",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "objek-dictionary",
+  "level": "Sulit",
+  "title": "Huruf Unik Pertama",
+  "desc": "Kembalikan indeks karakter pertama di s yang hanya muncul sekali. Jika tidak ada, kembalikan -1. Huruf besar dan kecil dianggap berbeda.",
+  "tags": ["dictionary", "string", "dua-lintasan"],
+  "function": { "name": "unikPertama", "params": [{ "name": "s", "type": "str" }], "returns": "int" },
+  "tests": [
+    { "args": ["ngoding"], "expected": 2 },
+    { "args": ["aabb"], "expected": -1 },
+    { "args": [""], "expected": -1 },
+    { "args": ["abcabd"], "expected": 2 },
+    { "args": ["z"], "expected": 0, "hidden": true },
+    { "args": ["aA"], "expected": 0, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Lintasan pertama: hitung frekuensi setiap karakter.",
+    "Lintasan kedua: cari karakter pertama yang frekuensinya 1."
+  ],
+  "explanation": "huruf-unik-pertama.md",
+  "commonMistakes": [
+    {
+      "text": "Mencari dengan indexOf dan lastIndexOf di dalam perulangan (O(n²)).",
+      "failsTest": 0
+    },
+    { "text": "Mengembalikan karakternya, bukan indeksnya.", "failsTest": 0 }
+  ],
+  "solutions": {
+    "javascript": "function unikPertama(s) {\n  const hitung = new Map();\n  for (const ch of s) hitung.set(ch, (hitung.get(ch) || 0) + 1);\n  for (let i = 0; i < s.length; i++) if (hitung.get(s[i]) === 1) return i;\n  return -1;\n}",
+    "python": "def unik_pertama(s):\n    for i, ch in enumerate(s):\n        if s.count(ch) == 1:\n            return i\n    return -1"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "js-0012",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "string-koleksi",
+  "level": "Sulit",
+  "title": "Kunci objek",
+  "code": "const o = {};\no[1] = \"a\";\no[\"1\"] = \"b\";\no[true] = \"c\";\nconsole.log(Object.keys(o).length, o[1]);",
+  "answer": "2 b",
+  "explain": "Kunci objek selalu diubah menjadi string. o[1] dan o[\"1\"] adalah kunci yang sama (\"1\"), jadi nilainya ditimpa menjadi \"b\". o[true] menjadi kunci \"true\". Total 2 kunci.",
+  "concepts": ["objek", "kunci string"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

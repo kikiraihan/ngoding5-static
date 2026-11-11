@@ -1,0 +1,18 @@
+{
+  "id": "js-0007",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "perulangan-kondisi",
+  "level": "Sedang",
+  "title": "var di dalam closure",
+  "code": "const fs = [];\nfor (var i = 0; i < 3; i++) fs.push(() => i);\nconsole.log(fs.map(f => f()).join(\",\"));",
+  "answer": "3,3,3",
+  "explain": "var punya satu variabel i untuk seluruh fungsi, bukan per putaran. Saat fungsi dipanggil, perulangan sudah selesai dan i = 3. Dengan let, hasilnya akan \"0,1,2\".",
+  "concepts": ["var", "closure", "scope"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

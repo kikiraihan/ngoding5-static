@@ -1,0 +1,14 @@
+[
+  { "slug": "percabangan", "label": "Percabangan", "mode": "code", "order": 1, "desc": "if, else, dan pemilihan kondisi." },
+  { "slug": "perulangan", "label": "Perulangan", "mode": "code", "order": 2, "desc": "for, while, dan pola pengulangan." },
+  { "slug": "string", "label": "String", "mode": "code", "order": 3, "desc": "Mengolah teks karakter demi karakter." },
+  { "slug": "array", "label": "Array", "mode": "code", "order": 4, "desc": "Daftar nilai: telusuri, saring, ubah." },
+  { "slug": "pencarian-pengurutan", "label": "Pencarian & Pengurutan", "mode": "code", "order": 5, "desc": "Mencari elemen dan mengurutkan data." },
+  { "slug": "rekursi", "label": "Rekursi", "mode": "code", "order": 6, "desc": "Fungsi yang memanggil dirinya sendiri." },
+  { "slug": "matematika", "label": "Matematika", "mode": "code", "order": 7, "desc": "Bilangan, pembagi, dan rumus." },
+  { "slug": "objek-dictionary", "label": "Objek & Dictionary", "mode": "code", "order": 8, "desc": "Pasangan kunci-nilai dan penghitungan." },
+  { "slug": "operator-tipe-data", "label": "Operator & Tipe Data", "mode": "quiz", "order": 9, "desc": "Operator, konversi, dan perilaku tipe." },
+  { "slug": "perulangan-kondisi", "label": "Perulangan & Kondisi", "mode": "quiz", "order": 10, "desc": "Alur kontrol yang menjebak." },
+  { "slug": "string-koleksi", "label": "String & Koleksi", "mode": "quiz", "order": 11, "desc": "String, list/array, dan dictionary." },
+  { "slug": "fungsi-rekursi", "label": "Fungsi & Rekursi", "mode": "quiz", "order": 12, "desc": "Scope, argumen, dan rekursi." }
+]

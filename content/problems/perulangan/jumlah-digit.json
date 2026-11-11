@@ -1,0 +1,48 @@
+{
+  "id": "jumlah-digit",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "perulangan",
+  "level": "Sedang",
+  "title": "Jumlah Digit",
+  "desc": "Kembalikan jumlah semua digit dari bilangan bulat n. Tanda minus diabaikan, jadi jumlahDigit(-123) = 6.",
+  "tags": ["while", "modulo", "digit"],
+  "function": { "name": "jumlahDigit", "params": [{ "name": "n", "type": "int" }], "returns": "int" },
+  "tests": [
+    { "args": [123], "expected": 6 },
+    { "args": [9], "expected": 9 },
+    { "args": [0], "expected": 0 },
+    { "args": [-123], "expected": 6 },
+    { "args": [1000], "expected": 1 },
+    { "args": [987654321], "expected": 45, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "n % 10 memberi digit terakhir.",
+    "Bagi n dengan 10 (pembagian bulat) untuk membuang digit terakhir, ulangi sampai n = 0.",
+    "Ambil nilai mutlak n dulu agar tanda minus tidak mengganggu."
+  ],
+  "explanation": "jumlah-digit.md",
+  "commonMistakes": [
+    {
+      "text": "Lupa nilai mutlak sehingga bilangan negatif menghasilkan nilai aneh.",
+      "failsTest": 3
+    },
+    {
+      "text": "Memakai pembagian biasa (/) di JavaScript sehingga perulangan tidak berhenti dengan benar.",
+      "failsTest": 0
+    }
+  ],
+  "solutions": {
+    "javascript": "function jumlahDigit(n) {\n  n = Math.abs(n);\n  let total = 0;\n  while (n > 0) {\n    total += n % 10;\n    n = Math.floor(n / 10);\n  }\n  return total;\n}",
+    "python": "def jumlah_digit(n):\n    return sum(int(d) for d in str(abs(n)))"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

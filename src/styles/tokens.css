@@ -1,0 +1,83 @@
+/* Token desain dari prototipe v4 (PRD §12.1–12.3). */
+:root {
+  --bg: #edf0f4;
+  --surface: #ffffff;
+  --sunk: #f5f7fa;
+  --ink: #18202b;
+  --muted: #5a6576;
+  --line: #d4dae3;
+  --accent: #3346a8;
+  --accent-soft: #e3e7f8;
+  --accent-ink: #ffffff;
+  --gold: #b98411;
+  --pass: #1d7f48;
+  --pass-soft: #e1f2e8;
+  --warn: #9a6a12;
+  --warn-soft: #f6edd9;
+  --fail: #be3a30;
+  --fail-soft: #f8e3e1;
+
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --r-panel: 12px;
+  --r-ctl: 8px;
+  --r-pill: 999px;
+  --pad-panel: 20px;
+  --ctl-h: 40px;
+  --gutter: max(16px, env(safe-area-inset-left));
+  --gutter-r: max(16px, env(safe-area-inset-right));
+  --code-size: 13px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #11151b;
+    --surface: #192029;
+    --sunk: #141920;
+    --ink: #e5e9ef;
+    --muted: #98a3b3;
+    --line: #2b3441;
+    --accent: #8fa1ff;
+    --accent-soft: #252d52;
+    --accent-ink: #10142a;
+    --gold: #e2b44a;
+    --pass: #5bc98c;
+    --pass-soft: #17301f;
+    --warn: #e4b455;
+    --warn-soft: #33290f;
+    --fail: #ff8278;
+    --fail-soft: #3a1e1c;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #11151b;
+  --surface: #192029;
+  --sunk: #141920;
+  --ink: #e5e9ef;
+  --muted: #98a3b3;
+  --line: #2b3441;
+  --accent: #8fa1ff;
+  --accent-soft: #252d52;
+  --accent-ink: #10142a;
+  --gold: #e2b44a;
+  --pass: #5bc98c;
+  --pass-soft: #17301f;
+  --warn: #e4b455;
+  --warn-soft: #33290f;
+  --fail: #ff8278;
+  --fail-soft: #3a1e1c;
+  color-scheme: dark;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --pad-panel: 14px;
+    --code-size: 14px;
+  }
+}

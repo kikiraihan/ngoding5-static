@@ -1,0 +1,43 @@
+{
+  "id": "nilai-maksimum",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "array",
+  "level": "Mudah",
+  "title": "Nilai Maksimum",
+  "desc": "Kembalikan nilai terbesar di dalam array arr. Array selalu berisi minimal satu angka. Jangan memakai fungsi bawaan seperti Math.max atau max.",
+  "tags": ["array", "telusur"],
+  "function": { "name": "nilaiMaks", "params": [{ "name": "arr", "type": "int[]" }], "returns": "int" },
+  "tests": [
+    { "args": [[3, 1, 4, 1, 5]], "expected": 5 },
+    { "args": [[7]], "expected": 7 },
+    { "args": [[-5, -2, -9]], "expected": -2 },
+    { "args": [[0, 0, 0]], "expected": 0 },
+    { "args": [[2, 9, 9, 1]], "expected": 9, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Anggap elemen pertama sebagai yang terbesar dulu.",
+    "Bandingkan dengan setiap elemen berikutnya dan perbarui bila lebih besar."
+  ],
+  "explanation": "nilai-maksimum.md",
+  "commonMistakes": [
+    {
+      "text": "Memulai nilai terbesar dari 0 sehingga array berisi semua negatif salah.",
+      "failsTest": 2
+    },
+    { "text": "Memakai fungsi bawaan sehingga tidak berlatih logika.", "failsTest": 0 }
+  ],
+  "solutions": {
+    "javascript": "function nilaiMaks(arr) {\n  let maks = arr[0];\n  for (const x of arr) if (x > maks) maks = x;\n  return maks;\n}",
+    "python": "def nilai_maks(arr):\n    maks = arr[0]\n    for x in arr:\n        if x > maks:\n            maks = x\n    return maks"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

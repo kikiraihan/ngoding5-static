@@ -1,0 +1,18 @@
+{
+  "id": "py-0004",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "operator-tipe-data",
+  "level": "Sulit",
+  "title": "is vs ==",
+  "code": "a = [1, 2]\nb = [1, 2]\nc = a\nprint(a == b, a is b, a is c)",
+  "answer": "True False True",
+  "explain": "== membandingkan isi (sama: True). is membandingkan identitas objek: a dan b dua list berbeda (False), sedangkan c menunjuk objek yang sama dengan a (True).",
+  "concepts": ["identitas", "kesamaan"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}

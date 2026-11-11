@@ -1,0 +1,43 @@
+{
+  "id": "nilai-huruf",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "percabangan",
+  "level": "Sedang",
+  "title": "Nilai Huruf",
+  "desc": "Ubah nilai angka 0–100 menjadi huruf: 85 ke atas \"A\", 70–84 \"B\", 55–69 \"C\", 40–54 \"D\", di bawah 40 \"E\". Jika nilai di luar 0–100, kembalikan \"Tidak valid\".",
+  "tags": ["if-else", "rentang"],
+  "function": { "name": "nilaiHuruf", "params": [{ "name": "nilai", "type": "int" }], "returns": "str" },
+  "tests": [
+    { "args": [90], "expected": "A" },
+    { "args": [85], "expected": "A" },
+    { "args": [84], "expected": "B" },
+    { "args": [55], "expected": "C" },
+    { "args": [39], "expected": "E" },
+    { "args": [0], "expected": "E" },
+    { "args": [101], "expected": "Tidak valid", "hidden": true },
+    { "args": [-5], "expected": "Tidak valid", "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Cek dulu apakah nilai berada di rentang yang sah.",
+    "Mulai dari batas tertinggi; cukup pakai >= di setiap cabang."
+  ],
+  "explanation": "nilai-huruf.md",
+  "commonMistakes": [
+    { "text": "Memakai > alih-alih >= sehingga 85 menjadi \"B\".", "failsTest": 1 },
+    { "text": "Tidak menangani nilai di luar 0–100.", "failsTest": 6 }
+  ],
+  "solutions": {
+    "javascript": "function nilaiHuruf(nilai) {\n  if (nilai < 0 || nilai > 100) return \"Tidak valid\";\n  if (nilai >= 85) return \"A\";\n  if (nilai >= 70) return \"B\";\n  if (nilai >= 55) return \"C\";\n  if (nilai >= 40) return \"D\";\n  return \"E\";\n}",
+    "python": "def nilai_huruf(nilai):\n    if nilai < 0 or nilai > 100:\n        return \"Tidak valid\"\n    for batas, huruf in ((85, \"A\"), (70, \"B\"), (55, \"C\"), (40, \"D\")):\n        if nilai >= batas:\n            return huruf\n    return \"E\""
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

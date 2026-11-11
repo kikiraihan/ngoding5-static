@@ -1,0 +1,5 @@
+[
+  { "id": "Mudah", "slug": "mudah", "label": "Mudah", "order": 1 },
+  { "id": "Sedang", "slug": "sedang", "label": "Sedang", "order": 2 },
+  { "id": "Sulit", "slug": "sulit", "label": "Sulit", "order": 3 }
+]

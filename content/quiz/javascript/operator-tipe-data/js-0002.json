@@ -1,0 +1,18 @@
+{
+  "id": "js-0002",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "operator-tipe-data",
+  "level": "Mudah",
+  "title": "String tambah angka",
+  "code": "console.log(\"5\" + 3);\nconsole.log(\"5\" - 3);\nconsole.log(1 + 2 + \"3\");",
+  "answer": "53\n2\n33",
+  "explain": "Jika salah satu operand + adalah string, terjadi penggabungan string: \"53\". Operator - selalu numerik: 2. Evaluasi kiri ke kanan: 1 + 2 = 3, lalu 3 + \"3\" = \"33\".",
+  "concepts": ["koersi tipe", "operator +"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ngoding5/schemas/quiz.schema.json",
+  "title": "Soal Tebak Output Ngoding5",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "schemaVersion", "revision", "lang", "tema", "level", "code", "answer", "explain", "createdAt", "updatedAt"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^(js|py)-\\d{4}$" },
+    "schemaVersion": { "const": 1 },
+    "revision": { "type": "integer", "minimum": 1 },
+    "lang": { "enum": ["javascript", "python"] },
+    "tema": { "type": "string" },
+    "level": { "enum": ["Mudah", "Sedang", "Sulit"] },
+    "title": { "type": "string", "maxLength": 80 },
+    "code": { "type": "string", "minLength": 5 },
+    "answer": { "type": "string" },
+    "explain": { "type": "string", "minLength": 10 },
+    "concepts": { "type": "array", "items": { "type": "string" } },
+    "verification": {
+      "type": "object",
+      "required": ["passed", "at"],
+      "properties": {
+        "passed": { "type": "boolean" },
+        "at": { "type": "string" },
+        "runtime": { "type": "string" }
+      }
+    },
+    "source": { "enum": ["bank", "generated", "migrated", "community"] },
+    "generator": {
+      "type": "object",
+      "properties": {
+        "by": { "type": "string" },
+        "topik": { "type": ["string", "null"] }
+      }
+    },
+    "createdAt": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "updatedAt": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+  }
+}

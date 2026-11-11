@@ -1,0 +1,18 @@
+{
+  "id": "py-0001",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "operator-tipe-data",
+  "level": "Mudah",
+  "title": "Pembagian bulat",
+  "code": "print(7 / 2)\nprint(7 // 2)\nprint(-7 // 2)\nprint(-7 % 3)",
+  "answer": "3.5\n3\n-4\n2",
+  "explain": "/ selalu menghasilkan float: 3.5. // membulatkan ke bawah (menuju minus tak hingga): 3 dan -4. Sisa bagi mengikuti tanda pembagi: -7 % 3 = 2 karena -7 = 3 × (-3) + 2.",
+  "concepts": ["//", "%", "pembagian"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}

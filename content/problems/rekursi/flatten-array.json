@@ -1,0 +1,43 @@
+{
+  "id": "flatten-array",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "rekursi",
+  "level": "Sedang",
+  "title": "Ratakan Array 2D",
+  "desc": "Diberi array dua dimensi (array berisi array angka), kembalikan satu array berisi semua angka secara berurutan dari kiri ke kanan, baris demi baris. Kerjakan dengan rekursi pada daftar baris.",
+  "tags": ["rekursi", "array-bersarang"],
+  "function": { "name": "ratakan", "params": [{ "name": "grid", "type": "int[][]" }], "returns": "int[]" },
+  "tests": [
+    { "args": [[[1, 2], [3], [4, 5, 6]]], "expected": [1, 2, 3, 4, 5, 6] },
+    { "args": [[]], "expected": [] },
+    { "args": [[[], []]], "expected": [] },
+    { "args": [[[7]]], "expected": [7] },
+    { "args": [[[1], [], [2, 3]]], "expected": [1, 2, 3], "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Basis: tidak ada baris tersisa → array kosong.",
+    "Hasil = baris pertama digabung dengan hasil meratakan baris-baris sisanya."
+  ],
+  "explanation": "flatten-array.md",
+  "commonMistakes": [
+    {
+      "text": "Memasukkan baris sebagai satu elemen (push array) alih-alih menyebarkan isinya.",
+      "failsTest": 0
+    },
+    { "text": "Tidak menangani baris kosong.", "failsTest": 2 }
+  ],
+  "solutions": {
+    "javascript": "function ratakan(grid) {\n  if (grid.length === 0) return [];\n  return [...grid[0], ...ratakan(grid.slice(1))];\n}",
+    "python": "def ratakan(grid):\n    out = []\n    for baris in grid:\n        out.extend(baris)\n    return out"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

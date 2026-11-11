@@ -1,0 +1,40 @@
+{
+  "id": "bilangan-prima",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "matematika",
+  "level": "Mudah",
+  "title": "Bilangan Prima",
+  "desc": "Kembalikan true jika n adalah bilangan prima, yaitu lebih besar dari 1 dan hanya habis dibagi 1 dan dirinya sendiri.",
+  "tags": ["prima", "pembagi"],
+  "function": { "name": "isPrima", "params": [{ "name": "n", "type": "int" }], "returns": "bool" },
+  "tests": [
+    { "args": [2], "expected": true },
+    { "args": [17], "expected": true },
+    { "args": [1], "expected": false },
+    { "args": [0], "expected": false },
+    { "args": [15], "expected": false },
+    { "args": [97], "expected": true },
+    { "args": [-7], "expected": false, "hidden": true },
+    { "args": [49], "expected": false, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": ["Bilangan ≤ 1 bukan prima.", "Cukup coba pembagi dari 2 sampai akar n."],
+  "explanation": "bilangan-prima.md",
+  "commonMistakes": [
+    { "text": "Menganggap 1 sebagai prima.", "failsTest": 2 },
+    { "text": "Berhenti di pembagi < √n (bukan ≤), sehingga 49 dianggap prima.", "failsTest": 7 }
+  ],
+  "solutions": {
+    "javascript": "function isPrima(n) {\n  if (n < 2) return false;\n  for (let d = 2; d * d <= n; d++) if (n % d === 0) return false;\n  return true;\n}",
+    "python": "def is_prima(n):\n    if n < 2:\n        return False\n    return all(n % d for d in range(2, n))"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

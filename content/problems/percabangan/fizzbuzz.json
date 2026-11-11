@@ -1,0 +1,61 @@
+{
+  "id": "fizzbuzz",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "percabangan",
+  "level": "Mudah",
+  "title": "FizzBuzz",
+  "desc": "Kembalikan daftar string dari 1 sampai n. Kelipatan 3 diganti \"Fizz\", kelipatan 5 diganti \"Buzz\", kelipatan 3 dan 5 diganti \"FizzBuzz\". Angka lain ditulis sebagai string. Jika n = 0, kembalikan daftar kosong.",
+  "tags": ["modulo", "if-else", "klasik"],
+  "function": { "name": "fizzBuzz", "params": [{ "name": "n", "type": "int" }], "returns": "str[]" },
+  "tests": [
+    { "args": [5], "expected": ["1", "2", "Fizz", "4", "Buzz"] },
+    {
+      "args": [15],
+      "expected": [
+        "1",
+        "2",
+        "Fizz",
+        "4",
+        "Buzz",
+        "Fizz",
+        "7",
+        "8",
+        "Fizz",
+        "Buzz",
+        "11",
+        "Fizz",
+        "13",
+        "14",
+        "FizzBuzz"
+      ]
+    },
+    { "args": [1], "expected": ["1"] },
+    { "args": [3], "expected": ["1", "2", "Fizz"] },
+    { "args": [0], "expected": [], "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Perhatikan urutan pengecekan kondisi.",
+    "Cek kelipatan 15 (3 dan 5) lebih dulu, baru 3, lalu 5.",
+    "Pakai perulangan i dari 1 sampai n, lalu if/else if dengan i % 15, i % 3, i % 5."
+  ],
+  "explanation": "fizzbuzz.md",
+  "commonMistakes": [
+    { "text": "Mengecek kelipatan 3 sebelum 15, sehingga 15 menjadi \"Fizz\".", "failsTest": 1 },
+    { "text": "Memulai perulangan dari 0 sehingga muncul \"FizzBuzz\" di awal.", "failsTest": 0 },
+    { "text": "Lupa mengubah angka menjadi string.", "failsTest": 2 }
+  ],
+  "solutions": {
+    "javascript": "function fizzBuzz(n) {\n  const out = [];\n  for (let i = 1; i <= n; i++) {\n    if (i % 15 === 0) out.push(\"FizzBuzz\");\n    else if (i % 3 === 0) out.push(\"Fizz\");\n    else if (i % 5 === 0) out.push(\"Buzz\");\n    else out.push(String(i));\n  }\n  return out;\n}",
+    "python": "def fizz_buzz(n):\n    out = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            out.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            out.append(\"Fizz\")\n        elif i % 5 == 0:\n            out.append(\"Buzz\")\n        else:\n            out.append(str(i))\n    return out"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

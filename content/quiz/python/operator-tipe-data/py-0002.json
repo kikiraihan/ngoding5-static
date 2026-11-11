@@ -1,0 +1,18 @@
+{
+  "id": "py-0002",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "operator-tipe-data",
+  "level": "Sedang",
+  "title": "round() bankir",
+  "code": "print(round(2.5))\nprint(round(3.5))\nprint(round(-0.5))\nprint(round(2.675, 2))",
+  "answer": "2\n4\n0\n2.67",
+  "explain": "Python memakai pembulatan bankir: .5 dibulatkan ke genap terdekat, jadi round(2.5) = 2 dan round(3.5) = 4, round(-0.5) = 0. 2.675 tidak bisa disimpan tepat sebagai float (sebenarnya 2.67499…), jadi hasilnya 2.67.",
+  "concepts": ["round", "pembulatan"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}

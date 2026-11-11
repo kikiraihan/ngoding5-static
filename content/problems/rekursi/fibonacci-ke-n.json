@@ -1,0 +1,42 @@
+{
+  "id": "fibonacci-ke-n",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "rekursi",
+  "level": "Sedang",
+  "title": "Fibonacci ke-N",
+  "desc": "Deret Fibonacci: F(0) = 0, F(1) = 1, F(n) = F(n−1) + F(n−2). Kembalikan F(n) untuk 0 ≤ n ≤ 70. Pastikan tetap cepat untuk n besar.",
+  "tags": ["rekursi", "memoisasi"],
+  "function": { "name": "fibonacci", "params": [{ "name": "n", "type": "int" }], "returns": "int" },
+  "tests": [
+    { "args": [0], "expected": 0 },
+    { "args": [1], "expected": 1 },
+    { "args": [2], "expected": 1 },
+    { "args": [10], "expected": 55 },
+    { "args": [30], "expected": 832040 },
+    { "args": [50], "expected": 12586269025, "hidden": true },
+    { "args": [70], "expected": 190392490709135, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Rekursi langsung menghitung hal yang sama berulang kali.",
+    "Simpan hasil yang sudah dihitung (memoisasi), atau hitung dari bawah ke atas."
+  ],
+  "explanation": "fibonacci-ke-n.md",
+  "commonMistakes": [
+    { "text": "Rekursi tanpa memoisasi sehingga n = 50 kehabisan waktu.", "failsTest": 5 },
+    { "text": "Basis salah: F(1) = 0 atau F(0) = 1.", "failsTest": 0 }
+  ],
+  "solutions": {
+    "javascript": "function fibonacci(n, memo = {}) {\n  if (n < 2) return n;\n  if (memo[n] !== undefined) return memo[n];\n  return (memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo));\n}",
+    "python": "def fibonacci(n):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

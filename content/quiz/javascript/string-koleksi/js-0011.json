@@ -1,0 +1,18 @@
+{
+  "id": "js-0011",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "string-koleksi",
+  "level": "Sedang",
+  "title": "Salinan referensi",
+  "code": "const a = [1, 2];\nconst b = a;\nb.push(3);\nconst c = [...a];\nc.push(4);\nconsole.log(a.length, b.length, c.length);",
+  "answer": "3 3 4",
+  "explain": "b menunjuk array yang sama dengan a, jadi push pada b juga mengubah a (panjang 3). c adalah salinan baru, push pada c tidak memengaruhi a: 3 3 4.",
+  "concepts": ["referensi", "array"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

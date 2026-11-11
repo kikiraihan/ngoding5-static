@@ -1,0 +1,44 @@
+{
+  "id": "fpb",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "matematika",
+  "level": "Mudah",
+  "title": "FPB (Faktor Persekutuan Terbesar)",
+  "desc": "Kembalikan FPB dari dua bilangan bulat tak negatif a dan b. FPB(a, 0) = a. Keduanya tidak akan sama-sama 0.",
+  "tags": ["euclid", "modulo"],
+  "function": {
+    "name": "fpb",
+    "params": [
+      { "name": "a", "type": "int" },
+      { "name": "b", "type": "int" }
+    ],
+    "returns": "int"
+  },
+  "tests": [
+    { "args": [12, 18], "expected": 6 },
+    { "args": [7, 13], "expected": 1 },
+    { "args": [0, 5], "expected": 5 },
+    { "args": [100, 10], "expected": 10 },
+    { "args": [48, 180], "expected": 12, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": ["Algoritma Euclid: FPB(a, b) = FPB(b, a mod b).", "Berhenti saat b = 0; jawabannya a."],
+  "explanation": "fpb.md",
+  "commonMistakes": [
+    { "text": "Tidak menangani b = 0 sehingga terjadi pembagian dengan nol.", "failsTest": 2 },
+    { "text": "Mencoba semua bilangan dari 1 sampai a (lambat).", "failsTest": 4 }
+  ],
+  "solutions": {
+    "javascript": "function fpb(a, b) {\n  while (b !== 0) [a, b] = [b, a % b];\n  return a;\n}",
+    "python": "def fpb(a, b):\n    if b == 0:\n        return a\n    return fpb(b, a % b)"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "subarray-jumlah-maks",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "array",
+  "level": "Sulit",
+  "title": "Subarray Jumlah Maksimum",
+  "desc": "Kembalikan jumlah terbesar dari subarray yang berurutan dan tidak kosong di dalam arr. Contoh: untuk [-2,1,-3,4,-1,2,1,-5,4] jawabannya 6 (dari [4,-1,2,1]).",
+  "tags": ["array", "kadane", "dynamic-programming"],
+  "function": { "name": "jumlahMaks", "params": [{ "name": "arr", "type": "int[]" }], "returns": "int" },
+  "tests": [
+    { "args": [[-2, 1, -3, 4, -1, 2, 1, -5, 4]], "expected": 6 },
+    { "args": [[1]], "expected": 1 },
+    { "args": [[-3, -1, -2]], "expected": -1 },
+    { "args": [[5, 4, -1, 7, 8]], "expected": 23 },
+    { "args": [[0, -1, 0]], "expected": 0, "hidden": true },
+    { "args": [[2, -1, 2, -1, 2]], "expected": 4, "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Di setiap posisi, pilih: lanjutkan subarray sebelumnya atau mulai baru dari sini.",
+    "Simpan \"jumlah terbaik yang berakhir di sini\" dan \"jumlah terbaik sejauh ini\".",
+    "saatIni = max(x, saatIni + x); terbaik = max(terbaik, saatIni)."
+  ],
+  "explanation": "subarray-jumlah-maks.md",
+  "commonMistakes": [
+    {
+      "text": "Memulai terbaik dari 0 sehingga array semua negatif menghasilkan 0.",
+      "failsTest": 2
+    },
+    {
+      "text": "Mereset jumlah ke 0 saat negatif tanpa menangani kasus semua negatif.",
+      "failsTest": 2
+    }
+  ],
+  "solutions": {
+    "javascript": "function jumlahMaks(arr) {\n  let saatIni = arr[0], terbaik = arr[0];\n  for (let i = 1; i < arr.length; i++) {\n    saatIni = Math.max(arr[i], saatIni + arr[i]);\n    terbaik = Math.max(terbaik, saatIni);\n  }\n  return terbaik;\n}",
+    "python": "def jumlah_maks(arr):\n    terbaik = arr[0]\n    for i in range(len(arr)):\n        total = 0\n        for j in range(i, len(arr)):\n            total += arr[j]\n            terbaik = max(terbaik, total)\n    return terbaik"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

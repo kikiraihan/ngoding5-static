@@ -1,0 +1,18 @@
+{
+  "id": "py-0011",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "python",
+  "tema": "string-koleksi",
+  "level": "Sedang",
+  "title": "Dict dari zip",
+  "code": "k = [\"a\", \"b\", \"a\"]\nv = [1, 2, 3]\nd = dict(zip(k, v))\nprint(d, len(d))",
+  "answer": "{'a': 3, 'b': 2} 2",
+  "explain": "zip memasangkan (\"a\",1), (\"b\",2), (\"a\",3). Kunci \"a\" muncul dua kali sehingga nilainya ditimpa menjadi 3, tetapi posisinya tetap di urutan pertama. Hasil {'a': 3, 'b': 2} dengan 2 kunci.",
+  "concepts": ["dict", "zip"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "js-0001",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "operator-tipe-data",
+  "level": "Sedang",
+  "title": "Increment kiri-kanan",
+  "code": "let x = 5;\nlet y = x++ + ++x;\nconsole.log(x, y);",
+  "answer": "7 12",
+  "explain": "x++ memakai nilai 5 lalu x menjadi 6. ++x menaikkan x ke 7 lalu memakai 7. Jadi y = 5 + 7 = 12 dan x = 7.",
+  "concepts": ["increment", "evaluasi kiri-ke-kanan"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

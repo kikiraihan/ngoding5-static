@@ -1,0 +1,56 @@
+{
+  "id": "jenis-segitiga",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "percabangan",
+  "level": "Sedang",
+  "title": "Jenis Segitiga",
+  "desc": "Diberi panjang tiga sisi a, b, c. Kembalikan \"sama sisi\" jika ketiganya sama, \"sama kaki\" jika tepat dua sisi sama, \"sembarang\" jika semua berbeda. Jika ketiga sisi tidak bisa membentuk segitiga (ada sisi ≤ 0, atau jumlah dua sisi ≤ sisi ketiga), kembalikan \"bukan segitiga\".",
+  "tags": ["if-else", "geometri"],
+  "function": {
+    "name": "jenisSegitiga",
+    "params": [
+      { "name": "a", "type": "int" },
+      { "name": "b", "type": "int" },
+      { "name": "c", "type": "int" }
+    ],
+    "returns": "str"
+  },
+  "tests": [
+    { "args": [3, 3, 3], "expected": "sama sisi" },
+    { "args": [3, 3, 5], "expected": "sama kaki" },
+    { "args": [3, 4, 5], "expected": "sembarang" },
+    { "args": [1, 2, 3], "expected": "bukan segitiga" },
+    { "args": [0, 1, 1], "expected": "bukan segitiga" },
+    { "args": [5, 3, 5], "expected": "sama kaki", "hidden": true },
+    { "args": [2, 2, 5], "expected": "bukan segitiga", "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Pastikan dulu ketiga sisi membentuk segitiga.",
+    "Ketidaksamaan segitiga: a + b > c, a + c > b, dan b + c > a."
+  ],
+  "explanation": "jenis-segitiga.md",
+  "commonMistakes": [
+    {
+      "text": "Mengecek jenis sebelum validasi, sehingga 2,2,5 dianggap \"sama kaki\".",
+      "failsTest": 6
+    },
+    {
+      "text": "Memakai >= pada ketidaksamaan segitiga sehingga 1,2,3 dianggap segitiga.",
+      "failsTest": 3
+    }
+  ],
+  "solutions": {
+    "javascript": "function jenisSegitiga(a, b, c) {\n  if (a <= 0 || b <= 0 || c <= 0) return \"bukan segitiga\";\n  if (a + b <= c || a + c <= b || b + c <= a) return \"bukan segitiga\";\n  if (a === b && b === c) return \"sama sisi\";\n  if (a === b || b === c || a === c) return \"sama kaki\";\n  return \"sembarang\";\n}",
+    "python": "def jenis_segitiga(a, b, c):\n    x, y, z = sorted([a, b, c])\n    if x <= 0 or x + y <= z:\n        return \"bukan segitiga\"\n    if x == z:\n        return \"sama sisi\"\n    if x == y or y == z:\n        return \"sama kaki\"\n    return \"sembarang\""
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

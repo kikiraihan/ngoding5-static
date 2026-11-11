@@ -1,0 +1,18 @@
+{
+  "id": "js-0009",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "string-koleksi",
+  "level": "Mudah",
+  "title": "Panjang dan indeks",
+  "code": "const s = \"Ngoding\";\nconsole.log(s.length);\nconsole.log(s[0] + s[s.length - 1]);\nconsole.log(s.slice(1, 4));",
+  "answer": "7\nNg\ngod",
+  "explain": "\"Ngoding\" punya 7 karakter. s[0] = \"N\", karakter terakhir \"g\", digabung \"Ng\". slice(1, 4) mengambil indeks 1 sampai 3: \"god\".",
+  "concepts": ["string", "indeks"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

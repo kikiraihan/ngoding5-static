@@ -1,0 +1,18 @@
+{
+  "id": "js-0016",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "fungsi-rekursi",
+  "level": "Sulit",
+  "title": "Hoisting fungsi",
+  "code": "console.log(typeof f, typeof g);\nfunction f() {}\nvar g = function () {};",
+  "answer": "function undefined",
+  "explain": "Deklarasi fungsi diangkat (hoisting) lengkap dengan isinya, jadi f sudah \"function\". Untuk var g, hanya deklarasinya yang diangkat dengan nilai undefined; penugasan fungsi terjadi belakangan.",
+  "concepts": ["hoisting", "var"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

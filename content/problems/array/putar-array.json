@@ -1,0 +1,48 @@
+{
+  "id": "putar-array",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "array",
+  "level": "Sedang",
+  "title": "Putar Array",
+  "desc": "Putar array ke kanan sebanyak k langkah. Contoh: [1,2,3,4,5] diputar 2 menjadi [4,5,1,2,3]. Nilai k bisa lebih besar dari panjang array, dan bisa 0. Kembalikan array baru.",
+  "tags": ["array", "modulo", "slice"],
+  "function": {
+    "name": "putarKanan",
+    "params": [
+      { "name": "arr", "type": "int[]" },
+      { "name": "k", "type": "int" }
+    ],
+    "returns": "int[]"
+  },
+  "tests": [
+    { "args": [[1, 2, 3, 4, 5], 2], "expected": [4, 5, 1, 2, 3] },
+    { "args": [[1, 2, 3], 0], "expected": [1, 2, 3] },
+    { "args": [[1, 2, 3], 3], "expected": [1, 2, 3] },
+    { "args": [[1, 2, 3], 4], "expected": [3, 1, 2] },
+    { "args": [[], 5], "expected": [], "hidden": true },
+    { "args": [[9], 100], "expected": [9], "hidden": true }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Memutar sebanyak panjang array = tidak berubah. Pakai k % n.",
+    "Hasilnya: potongan k elemen terakhir lalu sisanya di depan."
+  ],
+  "explanation": "putar-array.md",
+  "commonMistakes": [
+    { "text": "Lupa k % n sehingga k besar menghasilkan array salah.", "failsTest": 3 },
+    { "text": "Membagi dengan panjang 0 pada array kosong.", "failsTest": 4 }
+  ],
+  "solutions": {
+    "javascript": "function putarKanan(arr, k) {\n  const n = arr.length;\n  if (n === 0) return [];\n  k = k % n;\n  return arr.slice(n - k).concat(arr.slice(0, n - k));\n}",
+    "python": "def putar_kanan(arr, k):\n    n = len(arr)\n    if n == 0:\n        return []\n    k %= n\n    return arr[n - k:] + arr[:n - k]"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "urutkan-gelembung",
+  "schemaVersion": 1,
+  "revision": 1,
+  "tema": "pencarian-pengurutan",
+  "level": "Sedang",
+  "title": "Bubble Sort",
+  "desc": "Urutkan arr secara naik memakai bubble sort (tanpa sort bawaan) dan kembalikan hasilnya.",
+  "tags": ["sorting", "bubble-sort"],
+  "function": { "name": "bubbleSort", "params": [{ "name": "arr", "type": "int[]" }], "returns": "int[]" },
+  "tests": [
+    { "args": [[5, 1, 4, 2, 8]], "expected": [1, 2, 4, 5, 8] },
+    { "args": [[]], "expected": [] },
+    { "args": [[1]], "expected": [1] },
+    { "args": [[3, 3, 1]], "expected": [1, 3, 3] },
+    { "args": [[-1, -5, 0, 10, -5]], "expected": [-5, -5, -1, 0, 10], "hidden": true },
+    {
+      "args": [[9, 8, 7, 6, 5, 4, 3, 2, 1]],
+      "expected": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "hidden": true
+    }
+  ],
+  "compare": "exact",
+  "hints": [
+    "Bandingkan pasangan bertetangga dan tukar bila salah urut.",
+    "Setelah satu putaran penuh, elemen terbesar sudah di ujung kanan.",
+    "Ulangi n − 1 putaran; boleh berhenti lebih awal bila tidak ada pertukaran."
+  ],
+  "explanation": "urutkan-gelembung.md",
+  "commonMistakes": [
+    { "text": "Batas perulangan dalam sampai n sehingga arr[j+1] keluar batas.", "failsTest": 0 },
+    { "text": "Hanya melakukan satu putaran.", "failsTest": 5 }
+  ],
+  "solutions": {
+    "javascript": "function bubbleSort(arr) {\n  const a = arr.slice();\n  for (let i = 0; i < a.length - 1; i++) {\n    let tukar = false;\n    for (let j = 0; j < a.length - 1 - i; j++) {\n      if (a[j] > a[j + 1]) {\n        [a[j], a[j + 1]] = [a[j + 1], a[j]];\n        tukar = true;\n      }\n    }\n    if (!tukar) break;\n  }\n  return a;\n}",
+    "python": "def bubble_sort(arr):\n    a = list(arr)\n    n = len(a)\n    for i in range(n - 1):\n        tukar = False\n        for j in range(n - 1 - i):\n            if a[j] > a[j + 1]:\n                a[j], a[j + 1] = a[j + 1], a[j]\n                tukar = True\n        if not tukar:\n            break\n    return a"
+  },
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": {
+    "javascript": { "passed": true, "at": "2026-11-11", "runtime": "node 22" },
+    "python": { "passed": true, "at": "2026-11-11", "runtime": "python 3.13" }
+  }
+}

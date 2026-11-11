@@ -1,0 +1,18 @@
+{
+  "id": "js-0005",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "perulangan-kondisi",
+  "level": "Mudah",
+  "title": "Continue di for",
+  "code": "let s = \"\";\nfor (let i = 0; i < 6; i++) {\n  if (i % 2 === 0) continue;\n  s += i;\n}\nconsole.log(s);",
+  "answer": "135",
+  "explain": "continue melewati sisa badan perulangan untuk i genap. Yang ditambahkan hanya 1, 3, 5, dan karena s string hasilnya \"135\".",
+  "concepts": ["for", "continue"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

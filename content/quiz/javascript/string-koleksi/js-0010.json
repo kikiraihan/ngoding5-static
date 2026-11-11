@@ -1,0 +1,18 @@
+{
+  "id": "js-0010",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "string-koleksi",
+  "level": "Sedang",
+  "title": "Sort angka",
+  "code": "const a = [10, 9, 1, 100];\na.sort();\nconsole.log(a.join(\" \"));",
+  "answer": "1 10 100 9",
+  "explain": "Tanpa fungsi pembanding, sort() mengurutkan sebagai string. \"1\" < \"10\" < \"100\" < \"9\", jadi hasilnya 1 10 100 9. Gunakan a.sort((x, y) => x - y) untuk urutan angka.",
+  "concepts": ["sort", "perbandingan string"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}

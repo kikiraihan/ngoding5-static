@@ -1,0 +1,18 @@
+{
+  "id": "js-0014",
+  "schemaVersion": 1,
+  "revision": 1,
+  "lang": "javascript",
+  "tema": "fungsi-rekursi",
+  "level": "Sedang",
+  "title": "Rekursi dan gabung string",
+  "code": "function f(n) {\n  if (n === 0) return \"\";\n  return f(n - 1) + n;\n}\nconsole.log(f(4));",
+  "answer": "1234",
+  "explain": "f(4) = f(3) + 4 = (f(2) + 3) + 4 = … = \"\" + 1 + 2 + 3 + 4. Karena dimulai dari string kosong, angka digabung sebagai string: \"1234\".",
+  "concepts": ["rekursi", "urutan eksekusi"],
+  "source": "bank",
+  "generator": { "by": "seed", "topik": null },
+  "createdAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "verification": { "passed": true, "at": "2026-11-11", "runtime": "node 22" }
+}
